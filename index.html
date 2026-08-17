@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Himanshu Laddhad · Data Scientist</title>
+<meta name="description" content="Data scientist: forecasting in production at JCB, decision infrastructure, causal inference, and agentic LLM systems at PartnerLinQ.">
+<meta property="og:title" content="Himanshu Laddhad · Data Scientist">
+<meta property="og:description" content="On shipping models that survive contact with operations. Production data science from forecasting to agentic LLM systems.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/memo.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="wordmark" href="index.html">H.&nbsp;Laddhad</a>
+    <nav>
+      <a href="index.html" aria-current="page">Brief</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a class="nav-resume" href="assets/Himanshu_Laddhad_Resume.docx" download>Resume ↓</a>
+    </nav>
+  </div>
+</header>
+
+<main class="sheet">
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Data scientist <span class="gold">·</span> Purdue MSBAIM, July 2026</p>
+      <h1><span class="reveal" style="transition-delay:0ms">On</span> <span class="reveal" style="transition-delay:40ms">shipping</span> <span class="reveal" style="transition-delay:80ms">models</span> <span class="reveal" style="transition-delay:120ms">that</span> <span class="reveal" style="transition-delay:160ms">survive</span> <span class="reveal" style="transition-delay:200ms">contact</span> <span class="reveal" style="transition-delay:240ms">with</span> <em class="reveal" style="transition-delay:280ms">operations.</em></h1>
+      <p class="lead reveal" style="transition-delay:340ms">Three-plus years of data science in environments where a wrong number reaches a supplier order, a promotion budget, or a client's production pipeline. <strong>Forecasting and model operations</strong> at JCB and Bosch, a deliberate move into <strong>causal inference</strong>, and most recently <strong>agentic LLM systems in production</strong> at PartnerLinQ. Graduating July 2026; open to data scientist and applied ML roles anywhere in the US.</p>
+      <div class="cta-row reveal" style="transition-delay:400ms">
+        <a class="btn btn-primary" href="work.html">See the work</a>
+        <a class="btn" href="mailto:himanshuladdhad11@gmail.com">Email</a>
+        <a class="btn" href="https://linkedin.com/in/himanshu-laddhad" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/Himanshu-Laddhad" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="https://h11laddhad.medium.com" target="_blank" rel="noopener">Medium ↗</a>
+      </div>
+    </div>
+    <img class="hero-photo reveal" style="transition-delay:220ms" src="assets/portrait-hero.jpg" alt="Himanshu Laddhad">
+  </div>
+
+  <div class="contents reveal">
+    <p class="label">The work, in four parts</p>
+
+    <div class="toc-grid">
+      <button class="toc-card" data-panel="s1">
+        <span class="toc-card-no">§1</span>
+        <span class="toc-card-title">Forecasting in production</span>
+        <span class="toc-card-teaser">Rebuilding demand forecasting from Excel to a validated ML pipeline.</span>
+        <span class="toc-card-meta">JCB · 2023–24</span>
+      </button>
+      <button class="toc-card" data-panel="s2">
+        <span class="toc-card-no">§2</span>
+        <span class="toc-card-title">Visibility in production</span>
+        <span class="toc-card-teaser">Reporting infrastructure and root cause analysis at JCB and Bosch.</span>
+        <span class="toc-card-meta">JCB, Bosch · 2022–25</span>
+      </button>
+      <button class="toc-card" data-panel="s3">
+        <span class="toc-card-no">§3</span>
+        <span class="toc-card-title">Targeting and retention via causal modeling</span>
+        <span class="toc-card-teaser">Nudge, uplift modeling, and CLV at 6.7M users.</span>
+        <span class="toc-card-meta">Causal ML · 2025–26</span>
+      </button>
+      <button class="toc-card" data-panel="s4">
+        <span class="toc-card-no">§4</span>
+        <span class="toc-card-title">Agents in production</span>
+        <span class="toc-card-teaser">Architecting a production multi-agent LLM system at PartnerLinQ.</span>
+        <span class="toc-card-meta">PartnerLinQ · 2026</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="toc-backdrop" id="tocBackdrop"></div>
+
+  <div class="toc-modal" id="modal-s1" role="dialog" aria-modal="true" aria-labelledby="modal-s1-title" hidden>
+    <button class="toc-modal-close" aria-label="Close">&times;</button>
+    <div class="toc-modal-head">
+      <span class="toc-modal-no">§1</span>
+      <span class="toc-modal-title" id="modal-s1-title">Forecasting in production</span>
+    </div>
+    <p class="toc-modal-meta">JCB · Data Scientist, Supply Chain · 2023–24</p>
+    <div class="toc-modal-body">
+      <p>When I joined JCB's supply chain team, demand planning for 500+ SKUs across four product lines ran on Excel moving averages fed by a single SAP export. An initiative to improve it had already stalled once; my manager handed it to me because, in his words, I questioned assumptions rather than just executing tasks.</p>
+      <p>The honest fix was not a better spreadsheet. Moving averages cannot read the two signals the business already owned: capacity utilization and the sales pipeline. I rebuilt the system in Python, XGBoost and LightGBM averaged over lag and rolling features, a probability-weighted pipeline signal, and a temporal validation split matched to the six-month horizon the forecast actually serves. Rather than argue in the abstract, I prototyped on one product line and ran it in parallel with Excel for two weeks. Once planners saw the gap in their own numbers, the conversation moved from "why change" to "how fast."</p>
+      <p>The system earned its scars early. Shortly after deployment, the pipeline silently ingested a stale SAP export: the model ran correctly, on last month's data. I flagged it to my manager and the planning team the same day, rolled procurement back to the Excel baseline, and made data-freshness validation the first operation in the pipeline, ahead of any modeling. Then we ran parallel again and redeployed. The stakeholders who had been most skeptical trusted the system more after watching how it failed, which taught me something no accuracy metric does: in production, input validation is model accuracy, and loud failures are a feature.</p>
+      <p>The last mile mattered most. A machine-level forecast is planning language; procurement buys components. I wrote a breadth-first traversal of the multi-level bill of materials that exploded every SKU forecast into component-level demand, so the output landed on procurement's desk in the only language they act in. Supplier orders were placed proactively from model output, and the system maintained 98% on-time delivery against a 95% benchmark. It was still running after I moved teams, which is my working definition of adopted rather than deployed.</p>
+    </div>
+  </div>
+
+  <div class="toc-modal" id="modal-s2" role="dialog" aria-modal="true" aria-labelledby="modal-s2-title" hidden>
+    <button class="toc-modal-close" aria-label="Close">&times;</button>
+    <div class="toc-modal-head">
+      <span class="toc-modal-no">§2</span>
+      <span class="toc-modal-title" id="modal-s2-title">Visibility in production</span>
+    </div>
+    <p class="toc-modal-meta">JCB, Bosch · BI &amp; Quality · 2022–25</p>
+    <div class="toc-modal-body">
+      <p>Moving into JCB's BI and Quality role came with an open-ended mandate: modernize how the business used quality data, with no predefined scope. I drew my own boundary honestly. My work started at SAP Datasphere, consuming four upstream event streams, roughly 35,000 rows a day and 670 to 700 attributes per entity, rather than claiming ownership of upstream capture I didn't control.</p>
+      <p>I modeled those streams into a layered warehouse, inbound to harmonized to curated, keyed on a single join key that made end-to-end traceability possible for the first time. Validation was split deliberately: SQL views inside Datasphere own the business-rule logic the team needs to read and challenge, while dbt, on the dbt-hana adapter, owns the build and an automated test suite enforcing uniqueness, referential integrity, and statistical drift checks. Failed rows are quarantined with a typed exception code rather than dropped, because a missing record is not a clean record.</p>
+      <p>On top of that I built a Power BI layer on hourly incremental refresh, partitioned on ingestion time rather than event time so late corrections are never stranded, plus severity-tiered alerting through Power Automate with writeback acknowledgement and per-rule cooldowns. Fifteen-plus KPIs now serve three stakeholder groups off one shared definition each, twenty-plus hours a week of manual reporting disappeared, and a root-cause feedback loop cut failure rates 15%, the same discipline I'd learned two years earlier at Bosch, where a Pareto pass across 140-plus exception categories lifted process efficiency 10% and cut reprocessing 14%.</p>
+      <p>I think of this period as learning the unglamorous half of the job. A model nobody trusts is a research artifact; a KPI nobody agrees on is a rumor. Data contracts, typed exceptions, and definitions that survive a leadership review are what make the sophisticated work in §3 and §4 possible.</p>
+    </div>
+  </div>
+
+  <div class="toc-modal" id="modal-s3" role="dialog" aria-modal="true" aria-labelledby="modal-s3-title" hidden>
+    <button class="toc-modal-close" aria-label="Close">&times;</button>
+    <div class="toc-modal-head">
+      <span class="toc-modal-no">§3</span>
+      <span class="toc-modal-title" id="modal-s3-title">Targeting and retention via causal modeling</span>
+    </div>
+    <p class="toc-modal-meta">Causal ML · Nudge &amp; churn/CLV · 2025–26</p>
+    <div class="toc-modal-body">
+      <p>Forecasting answers "what will happen." The question a budget holder actually asks is "what will happen <em>because we acted</em>," and standard ML answers it wrong by construction. My clearest evidence is Nudge, a promotion-targeting system I built on the Hillstrom email RCT: a well-tuned XGBoost conversion classifier, the industry default, confidently routes discount budget to loyal customers who convert regardless. That is not retention; it is a margin haircut, roughly $18,200 a year of it.</p>
+      <p>The system estimates individual treatment effects instead: T-, S-, and X-Learners, a Causal Forest with confidence intervals, and a Doubly Robust Learner, scored by Qini rather than AUC because ranking likely converters is not the job. The result I find most instructive is that the winner on this dataset was the <em>least</em> sophisticated model. The S-Learner won because it keeps all 64K rows in one model while the fancier estimators split the sample and pay for it in variance. Model-data fit beats model sophistication, and knowing when is the skill.</p>
+      <p>Sophistication earned its keep elsewhere. In a robustness experiment I re-assigned treatment with realistic selection bias and watched the T-Learner's estimates inflate exactly where the confounding predicted, while the doubly robust estimator held. A budget optimizer sits on top, a linear program that allocates any promo budget from $5K to $100K to maximize incremental conversions.</p>
+      <p>The same discipline runs through my churn and CLV work at KKBox: 35 features engineered from 410M log rows across 6.7M users in DuckDB, XGBoost at ROC-AUC 0.9815, and an expected-value layer on top of the LightGBM lifetime-value model that projected $1.26M in targeted retention ROI. A high AUC is not a decision; the expected-value layer is what turns a score into one.</p>
+    </div>
+  </div>
+
+  <div class="toc-modal" id="modal-s4" role="dialog" aria-modal="true" aria-labelledby="modal-s4-title" hidden>
+    <button class="toc-modal-close" aria-label="Close">&times;</button>
+    <div class="toc-modal-head">
+      <span class="toc-modal-no">§4</span>
+      <span class="toc-modal-title" id="modal-s4-title">Agents in production</span>
+    </div>
+    <p class="toc-modal-meta">PartnerLinQ · AI Engineer, Industry Practicum · Jan–May 2026</p>
+    <div class="toc-modal-body">
+      <p>At PartnerLinQ, a B2B integration SaaS, building a single EDI-to-XML mapping by hand took three to five weeks. I architected a RAG-grounded mapping agent instead: retrieval over a 400-plus file XSLT corpus keyed by company and function, with messages routed through Groq to a GPT-4.1 tool-calling model that generates the mapping. That alone cut build time to three to four hours.</p>
+      <p>The harder constraint was cost and latency at production volume, so I trained a small language model, Qwen, with QLoRA, covering generation, modification, repair, and explanation, grounded by the same retrieval layer. It reached 73% first-pass validity against PartnerLinQ's Altova validation suite, against 78% for the GPT-4.1 pilot it was measured against, close enough to remove per-call API dependency across the full task set.</p>
+      <p>I delivered a Streamlit evaluation harness fronting both pipelines, executing generated XSLT against user-supplied test cases in the same session, and handed it off as the reference implementation for PartnerLinQ's engineering team to productionize. The habits underneath are the same ones from §1: validate before you trust a generation, measure against a real baseline before you claim a win, and build something the team can keep running once you're gone.</p>
+    </div>
+  </div>
+
+  <div class="closing-cta reveal">
+    <p>Five roles, six featured projects, and the writing that came out of building them all sit on one page.</p>
+    <a class="btn btn-primary" href="work.html">Browse all work ↗</a>
+  </div>
+
+</main>
+
+<footer class="colophon">
+  <div class="colophon-inner">
+
+    <div class="footer-sitemap">
+      <div>
+        <p class="col-label">Pages</p>
+        <ul>
+          <li><a href="index.html">Brief</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="col-label">The work, in four parts</p>
+        <ul>
+          <li><a href="index.html#s1">§1 Forecasting in production</a></li>
+          <li><a href="index.html#s2">§2 Visibility in production</a></li>
+          <li><a href="index.html#s3">§3 Targeting and retention</a></li>
+          <li><a href="index.html#s4">§4 Agents in production</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="col-label">Projects</p>
+        <ul>
+          <li><a href="https://github.com/Himanshu-Laddhad/Nudge-Causal-Promotion-Intelligence-System" target="_blank" rel="noopener">Nudge (CPIS)</a></li>
+          <li><a href="https://github.com/Himanshu-Laddhad/Customer-Churn-CLV-Prediction-Pipeline" target="_blank" rel="noopener">Churn &amp; CLV</a></li>
+          <li><a href="https://github.com/Himanshu-Laddhad/Conversational-XSLT-Mapping-Agent" target="_blank" rel="noopener">Mapping agent</a></li>
+          <li><a href="https://prepstack.ryg.lol/" target="_blank" rel="noopener">PrepStack</a></li>
+          <li><a href="https://bank-intelligence.streamlit.app/" target="_blank" rel="noopener">BankCheck</a></li>
+          <li><a href="https://github.com/Himanshu-Laddhad/Customer-review-intelligence-nlp" target="_blank" rel="noopener">Retail NLP</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="colophon-bottom">
+      <p class="reach">Reading this because you're hiring? The fastest route is <a href="mailto:himanshuladdhad11@gmail.com">himanshuladdhad11@gmail.com</a>. I reply the same day.</p>
+      <ul>
+        <li><a href="mailto:himanshuladdhad11@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A2.5 2.5 0 014.5 3h15A2.5 2.5 0 0122 5.5v13a2.5 2.5 0 01-2.5 2.5h-15A2.5 2.5 0 012 18.5v-13zm2.4-.1l7.1 5.68a.75.75 0 00.94 0l7.1-5.68a1 1 0 00-.04-.02H4.44a1 1 0 00-.04.02zM20 6.86l-6.86 5.49a2.25 2.25 0 01-2.8 0L3.5 6.86V18.5c0 .55.45 1 1 1h15c.55 0 1-.45 1-1V6.86z"/></svg></a></li>
+        <li><a href="https://linkedin.com/in/himanshu-laddhad" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
+        <li><a href="https://github.com/Himanshu-Laddhad" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a></li>
+        <li><a href="https://h11laddhad.medium.com" target="_blank" rel="noopener" aria-label="Medium"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a></li>
+      </ul>
+      <p class="type-note">Set in Newsreader and IBM Plex Mono on black. Written and built by hand, West Lafayette, 2026.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var backdrop = document.getElementById('tocBackdrop');
+  var lastTrigger = null;
+
+  function openModal(id) {
+    var modal = document.getElementById('modal-' + id);
+    if (!modal) return;
+    modal.hidden = false;
+    backdrop.hidden = false;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        modal.classList.add('open');
+        backdrop.classList.add('open');
+      });
+    });
+    document.body.classList.add('modal-open');
+    modal.querySelector('.toc-modal-close').focus();
+  }
+
+  function closeModal() {
+    var openModalEl = document.querySelector('.toc-modal.open');
+    if (!openModalEl) return;
+    openModalEl.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    var finish = function () {
+      openModalEl.hidden = true;
+      backdrop.hidden = true;
+    };
+    if (reduceMotion) { finish(); } else { setTimeout(finish, 320); }
+    if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
+  }
+
+  document.querySelectorAll('.toc-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      lastTrigger = card;
+      openModal(card.getAttribute('data-panel'));
+    });
+  });
+
+  var hashId = window.location.hash.replace('#', '');
+  if (/^s[1-4]$/.test(hashId)) {
+    openModal(hashId);
+  }
+
+  window.addEventListener('hashchange', function () {
+    var id = window.location.hash.replace('#', '');
+    if (/^s[1-4]$/.test(id)) {
+      openModal(id);
+    }
+  });
+
+  document.querySelectorAll('.toc-modal-close').forEach(function (btn) {
+    btn.addEventListener('click', closeModal);
+  });
+
+  backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
