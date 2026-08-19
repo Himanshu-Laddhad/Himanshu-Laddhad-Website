@@ -1,0 +1,29 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-08-19T09:29:33.624Z",
+        "reason": "user confirmed: user specified Space Grotesk (headings) + Inter (body) + JetBrains Mono (metrics) as the type system for this site."
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-08-19T09:29:33.735Z",
+        "reason": "user confirmed: user specified Space Grotesk (headings) + Inter (body) + JetBrains Mono (metrics) as the type system for this site."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-08-19T09:33:30.038Z",
+        "reason": "Claude: detector cannot resolve clamp(); every heading uses clamp() so only 3 of 8 rendered sizes are sampled. Measured in-browser at 1440px: 12.8, 16, 18.7, 25, 35.2, 44, 50.4, 76px = 5.94x spread. UI tier is an exact 1.25 modular scale (12.8/16/25)."
+      }
+    ]
+  }
+}

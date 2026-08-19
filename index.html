@@ -10,9 +10,9 @@
 <meta property="og:type" content="profile">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f%5B%5D=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
@@ -273,50 +273,124 @@
     <!-- TOOLKIT -->
     <section class="band" id="toolkit">
       <h2 data-reveal="rise">Toolkit</h2>
-      <div class="tabs" role="tablist" aria-label="Skill areas">
-        <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Languages &amp; libraries</button>
-        <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false">AI, MLOps &amp; platforms</button>
-        <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false">Methods &amp; domain</button>
-      </div>
-      <div class="skills" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
-        <span>Python</span><span>Pandas</span><span>NumPy</span><span>scikit-learn</span><span>XGBoost</span><span>LightGBM</span><span>PyTorch</span><span>HuggingFace Transformers</span><span>spaCy</span><span>PySpark</span><span>SQL</span><span>PostgreSQL</span><span>BigQuery</span><span>DuckDB</span><span>XSLT</span><span>XML / EDI</span><span>Parquet</span><span>AWS SageMaker</span><span>ETL pipelines</span>
-      </div>
-      <div class="skills" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
-        <span>LangGraph</span><span>LLM APIs</span><span>RAG</span><span>QLoRA / PEFT</span><span>ChromaDB</span><span>LangChain</span><span>LlamaIndex</span><span>MLflow</span><span>Weights &amp; Biases</span><span>SAP Datasphere</span><span>SAP BW</span><span>dbt</span><span>Power BI</span><span>Power Automate</span><span>Azure Data Lake Gen2</span><span>Databricks</span><span>Snowflake</span><span>Git</span>
-      </div>
-      <div class="skills" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
-        <span>Causal inference &amp; uplift modelling</span><span>A/B testing &amp; experimentation</span><span>Dimensional modelling</span><span>Data contracts</span><span>Feature engineering</span><span>NLP &amp; transformers</span><span>SHAP &amp; interpretability</span><span>Root cause analysis</span><span>Data quality management</span><span>Agile / Scrum</span>
+      <div class="matrix" data-reveal="stagger">
+        <div class="matrix-group">
+          <h3>Languages &amp; libraries</h3>
+          <ul>
+            <li>Python</li><li>SQL</li><li>Pandas</li><li>NumPy</li><li>scikit-learn</li><li>XGBoost</li><li>LightGBM</li><li>PyTorch</li><li>HuggingFace Transformers</li><li>spaCy</li><li>PySpark</li><li>PostgreSQL</li><li>BigQuery</li><li>DuckDB</li><li>XSLT</li><li>XML / EDI</li><li>Parquet</li>
+          </ul>
+        </div>
+        <div class="matrix-group">
+          <h3>AI, MLOps &amp; platforms</h3>
+          <ul>
+            <li>RAG</li><li>QLoRA / PEFT</li><li>LangGraph</li><li>LangChain</li><li>LlamaIndex</li><li>LLM APIs</li><li>ChromaDB</li><li>MLflow</li><li>Weights &amp; Biases</li><li>SAP Datasphere</li><li>SAP BW</li><li>dbt</li><li>Power BI</li><li>Power Automate</li><li>Azure Data Lake Gen2</li><li>Databricks</li><li>Snowflake</li><li>AWS SageMaker</li><li>Git</li>
+          </ul>
+        </div>
+        <div class="matrix-group">
+          <h3>Methods &amp; domain</h3>
+          <ul>
+            <li>Causal inference &amp; uplift modelling</li><li>A/B testing &amp; experimentation</li><li>Feature engineering</li><li>NLP &amp; transformers</li><li>SHAP &amp; interpretability</li><li>Dimensional modelling</li><li>Data contracts</li><li>ETL pipelines</li><li>Root cause analysis</li><li>Data quality management</li><li>Agile / Scrum</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- CREDENTIALS -->
     <section class="band" id="credentials">
-      <h2 data-reveal="rise">Credentials</h2>
-      <div class="creds" data-reveal="stagger">
-        <div>
-          <h3>Education</h3>
-          <ul>
-            <li>MS, Business Analytics &amp; Information Management<span>Purdue University, Daniels School of Business · GPA 3.7 · 2025–2026</span></li>
-            <li>BTech, Mechanical Engineering<span>Sardar Vallabhbhai National Institute of Technology, Surat · GPA 3.6 · 2019–2023</span></li>
-          </ul>
+      <h2 data-reveal="rise">Education &amp; credentials</h2>
+
+      <div class="timeline" data-reveal="stagger" data-reveal-step="55">
+
+        <div class="tl-item" data-kind="education">
+          <span class="tl-year">2025–26</span>
+          <span class="tl-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z" stroke-linejoin="round"/><path d="M7 11v4.2c0 .5.3 1 .8 1.2A9.6 9.6 0 0 0 12 17a9.6 9.6 0 0 0 4.2-.6c.5-.2.8-.7.8-1.2V11" stroke-linecap="round"/></svg>
+          </span>
+          <div class="tl-body">
+            <h3>MS, Business Analytics &amp; Information Management</h3>
+            <p class="tl-issuer">Purdue University, Daniels School of Business · GPA 3.7</p>
+          </div>
         </div>
-        <div>
-          <h3>Certifications</h3>
-          <ul>
-            <li>Tableau Desktop Specialist</li>
-            <li>Microsoft Azure AI Fundamentals<span>AI-900</span></li>
-            <li>AWS Certified Cloud Practitioner<span>CLF-C02</span></li>
-            <li>DataCamp Data Scientist &amp; SQL Associate</li>
-          </ul>
+
+        <div class="tl-item" data-kind="award">
+          <span class="tl-year">2026</span>
+          <span class="tl-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V7l-8-4Z" stroke-linejoin="round"/></svg>
+          </span>
+          <div class="tl-body">
+            <h3>Graduate Teaching Assistant, AI for Business</h3>
+            <p class="tl-issuer">Purdue University</p>
+          </div>
         </div>
-        <div>
-          <h3>Recognition</h3>
-          <ul>
-            <li>Excellence in Planning and Efficiency<span>JCB · 2025</span></li>
-            <li>Rising New Joinee Award<span>JCB · 2024</span></li>
-            <li>Graduate Teaching Assistant, AI for Business<span>Purdue University · 2026</span></li>
-            <li>Research Intern, EV market landscape<span>Indian Institute of Management, Ranchi</span></li>
-          </ul>
+
+        <div class="tl-item" data-kind="cert">
+          <span class="tl-year">2026</span>
+          <span class="tl-mark"><img src="assets/badges/aws-academy-ml.png" alt="" onerror="this.remove()"></span>
+          <div class="tl-body">
+            <h3>AWS Academy Graduate, Machine Learning Foundations</h3>
+            <p class="tl-issuer">Amazon Web Services</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-kind="award">
+          <span class="tl-year">2025</span>
+          <span class="tl-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V7l-8-4Z" stroke-linejoin="round"/></svg>
+          </span>
+          <div class="tl-body">
+            <h3>Excellence in Planning and Efficiency</h3>
+            <p class="tl-issuer">JCB India</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-kind="award">
+          <span class="tl-year">2024</span>
+          <span class="tl-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V7l-8-4Z" stroke-linejoin="round"/></svg>
+          </span>
+          <div class="tl-body">
+            <h3>Rising New Joinee Award</h3>
+            <p class="tl-issuer">JCB India</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-kind="cert">
+          <span class="tl-year">2024</span>
+          <span class="tl-mark"><img src="assets/badges/datacamp-ds.png" alt="" onerror="this.remove()"></span>
+          <div class="tl-body">
+            <h3>Data Scientist Associate</h3>
+            <p class="tl-issuer">DataCamp</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-kind="cert">
+          <span class="tl-year">2024</span>
+          <span class="tl-mark"><img src="assets/badges/datacamp-sql.png" alt="" onerror="this.remove()"></span>
+          <div class="tl-body">
+            <h3>SQL Associate</h3>
+            <p class="tl-issuer">DataCamp</p>
+          </div>
+        </div>
+
+        <div class="tl-item" data-kind="education">
+          <span class="tl-year">2019–23</span>
+          <span class="tl-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 8.5 12 4l9 4.5-9 4.5-9-4.5Z" stroke-linejoin="round"/><path d="M7 11v4.2c0 .5.3 1 .8 1.2A9.6 9.6 0 0 0 12 17a9.6 9.6 0 0 0 4.2-.6c.5-.2.8-.7.8-1.2V11" stroke-linecap="round"/></svg>
+          </span>
+          <div class="tl-body">
+            <h3>BTech, Mechanical Engineering</h3>
+            <p class="tl-issuer">Sardar Vallabhbhai National Institute of Technology, Surat · GPA 3.6</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cert-extra">
+        <h3>Also certified</h3>
+        <div class="badge-row">
+          <span class="badge-chip"><span class="badge-ph" aria-hidden="true">AWS</span>AWS Certified Cloud Practitioner</span>
+          <span class="badge-chip"><span class="badge-ph" aria-hidden="true">AI</span>Microsoft Azure AI Fundamentals</span>
+          <span class="badge-chip"><span class="badge-ph" aria-hidden="true">TB</span>Tableau Desktop Specialist</span>
         </div>
       </div>
     </section>
@@ -329,7 +403,7 @@
 
     <footer class="foot">
       <p>Himanshu Laddhad · West Lafayette, Indiana</p>
-      <p>Set in Cormorant Garamond and Satoshi.</p>
+      <p>Set in Space Grotesk, Inter and JetBrains Mono.</p>
     </footer>
 
   </div>
@@ -406,26 +480,6 @@
       var open = role.getAttribute('data-open') === 'true';
       role.setAttribute('data-open', String(!open));
       btn.setAttribute('aria-expanded', String(!open));
-    });
-  });
-
-  /* ---- toolkit tabs ---- */
-  var tabs = [].slice.call(document.querySelectorAll('.tab'));
-  function selectTab(t){
-    tabs.forEach(function(x){
-      var on = x === t;
-      x.setAttribute('aria-selected', String(on));
-      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
-    });
-  }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click', function(){ selectTab(t); });
-    t.addEventListener('keydown', function(e){
-      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if(!d) return;
-      e.preventDefault();
-      var n = tabs[(i + d + tabs.length) % tabs.length];
-      n.focus(); selectTab(n);
     });
   });
 
