@@ -78,9 +78,9 @@
     <!-- HERO -->
     <section class="hero" id="introduction">
       <div>
-        <h1 class="hero-title">Himanshu <em>Laddhad</em></h1>
-        <p class="hero-sub">Data scientist working across causal inference, demand forecasting, governed data platforms and retrieval-grounded LLM systems. Currently completing an MS in Business Analytics at Purdue.</p>
-        <div class="hero-acts">
+        <h1 class="hero-title" data-reveal="words" data-reveal-step="60">Himanshu <em>Laddhad</em></h1>
+        <p class="hero-sub" data-reveal="rise">Data scientist working across causal inference, demand forecasting, governed data platforms and retrieval-grounded LLM systems. Currently completing an MS in Business Analytics at Purdue.</p>
+        <div class="hero-acts" data-reveal="rise">
           <a class="btn btn-solid" href="#work">Selected work</a>
           <a class="btn" href="mailto:himanshuladdhad11@gmail.com">Get in touch</a>
           <a class="btn" href="assets/Himanshu_Laddhad_Resume.pdf" download>
@@ -97,12 +97,13 @@
 
     <!-- STATEMENT (focal motion) -->
     <section class="statement" id="statement" aria-label="Positioning">
-      <p data-split>I build data and AI systems that hold up in production: forecasting teams trust, pipelines that fail loudly instead of silently, and retrieval-grounded agents that turn weeks of manual work into hours.</p>
+      <p data-reveal="words">I build data and AI systems that hold up in production: forecasting teams trust, pipelines that fail loudly instead of silently, and retrieval-grounded agents that turn weeks of manual work into hours.</p>
     </section>
 
     <!-- EXPERIENCE -->
     <section class="band" id="experience">
-      <h2>Experience</h2>
+      <h2 data-reveal="rise">Experience</h2>
+      <div class="roles" data-reveal="stagger">
 
       <div class="role" data-open="false">
         <button class="role-head" aria-expanded="false" aria-controls="r1">
@@ -181,12 +182,13 @@
           </ul>
         </div></div></div>
       </div>
+      </div>
     </section>
 
     <!-- SELECTED WORK -->
     <section class="band" id="work">
-      <h2>Selected work</h2>
-      <div class="work-grid">
+      <h2 data-reveal="rise">Selected work</h2>
+      <div class="work-grid" data-reveal="stagger">
 
         <a class="proj" href="https://github.com/Himanshu-Laddhad/Nudge-Causal-Promotion-Intelligence-System" target="_blank" rel="noopener">
           <div class="proj-media"><div class="ph"><img src="assets/thumbs/nudge.jpg" alt="" onerror="this.remove()"><span class="ph-label">Nudge<br>16:10</span></div></div>
@@ -245,7 +247,8 @@
 
     <!-- WRITING -->
     <section class="band" id="writing">
-      <h2>Writing</h2>
+      <h2 data-reveal="rise">Writing</h2>
+      <div class="posts" data-reveal="stagger">
 
       <a class="post" href="https://h11laddhad.medium.com/why-i-used-three-different-llms-to-build-one-interview-coach-11131ca489d6" target="_blank" rel="noopener">
         <span class="date">Medium</span>
@@ -264,11 +267,12 @@
         </span>
         <svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      </div>
     </section>
 
     <!-- TOOLKIT -->
     <section class="band" id="toolkit">
-      <h2>Toolkit</h2>
+      <h2 data-reveal="rise">Toolkit</h2>
       <div class="tabs" role="tablist" aria-label="Skill areas">
         <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Languages &amp; libraries</button>
         <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false">AI, MLOps &amp; platforms</button>
@@ -287,8 +291,8 @@
 
     <!-- CREDENTIALS -->
     <section class="band" id="credentials">
-      <h2>Credentials</h2>
-      <div class="creds">
+      <h2 data-reveal="rise">Credentials</h2>
+      <div class="creds" data-reveal="stagger">
         <div>
           <h3>Education</h3>
           <ul>
@@ -319,7 +323,7 @@
 
     <!-- CONTACT -->
     <section class="contact" id="contact">
-      <h2>Let's build something that holds up.</h2>
+      <h2 data-reveal="words" data-reveal-step="46">Let&rsquo;s build something that holds up.</h2>
       <a class="contact-mail" href="mailto:himanshuladdhad11@gmail.com">himanshuladdhad11@gmail.com</a>
     </section>
 
@@ -335,29 +339,64 @@
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- word-split for the focal statement ---- */
-  document.querySelectorAll('[data-split]').forEach(function(el){
-    var html = el.innerHTML;
-    // preserve <em> by splitting on spaces only outside tags
-    el.innerHTML = html.replace(/(\S+)/g, function(w){
-      if (w.charAt(0) === '<') return w;
-      return '<span class="w">' + w + '</span>';
-    });
-    el.querySelectorAll('.w').forEach(function(w,i){
-      w.style.transitionDelay = (i * 28) + 'ms';
-    });
+  /* ---- reveal system ----
+     data-reveal="words"   split into words, each lifting into ink
+     data-reveal="rise"    the whole block rises once
+     data-reveal="stagger" direct children arrive in sequence
+     data-reveal-step      ms between items (optional)
+  */
+  var reveals = [].slice.call(document.querySelectorAll('[data-reveal]'));
+
+  reveals.forEach(function(el){
+    var kind = el.getAttribute('data-reveal');
+    var step = parseInt(el.getAttribute('data-reveal-step'), 10);
+
+    if (kind === 'words') {
+      // wrap each word, leaving existing markup (<em>, <a>) intact
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+      var nodes = [], n;
+      while ((n = walker.nextNode())) { if (n.nodeValue.trim()) nodes.push(n); }
+      nodes.forEach(function(node){
+        var frag = document.createDocumentFragment();
+        node.nodeValue.split(/(\s+)/).forEach(function(tok){
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) {
+            frag.appendChild(document.createTextNode(tok));
+          } else {
+            var s = document.createElement('span');
+            s.className = 'w';
+            s.textContent = tok;
+            frag.appendChild(s);
+          }
+        });
+        node.parentNode.replaceChild(frag, node);
+      });
+      var gap = isNaN(step) ? 26 : step;
+      el.querySelectorAll('.w').forEach(function(w, i){
+        w.style.transitionDelay = (i * gap) + 'ms';
+      });
+    }
+
+    if (kind === 'stagger') {
+      var kids = el.children;
+      var k = isNaN(step) ? 70 : step;
+      for (var i = 0; i < kids.length; i++) {
+        kids[i].style.transitionDelay = Math.min(i * k, 480) + 'ms';
+      }
+    }
   });
 
-  /* ---- focal reveal ---- */
-  var stmt = document.getElementById('statement');
-  if (stmt) {
-    if (reduce || !('IntersectionObserver' in window)) {
-      stmt.classList.add('lit');
-    } else {
-      new IntersectionObserver(function(es,o){
-        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('lit'); o.unobserve(e.target); } });
-      }, {threshold: .35}).observe(stmt);
-    }
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var revealer = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      });
+    }, {threshold: 0.2, rootMargin: '0px 0px -8% 0px'});
+    reveals.forEach(function(el){ revealer.observe(el); });
   }
 
   /* ---- experience accordion ---- */

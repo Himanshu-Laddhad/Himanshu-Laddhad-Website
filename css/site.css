@@ -173,10 +173,35 @@ section{scroll-margin-top:2rem}
   font-family:var(--display);font-size:clamp(1.9rem,4.1vw,3.15rem);
   line-height:1.32;letter-spacing:-.02em;max-width:22ch;font-weight:400;
 }
-.statement .w{display:inline-block;color:var(--ink);transition:color .5s var(--ease),transform .5s var(--ease),opacity .5s var(--ease)}
-.js .statement .w{color:rgba(18,16,14,.14);transform:translateY(.32em);opacity:.6}
-.js .statement.lit .w{color:var(--ink);transform:none;opacity:1}
 .statement em{font-style:italic}
+
+/* ---- reveal system ----------------------------------------------
+   data-reveal="words"   per-word ink lift   (headline moments)
+   data-reveal="rise"    whole block rises   (section headings, blocks)
+   data-reveal="stagger" children in sequence (lists and card grids)
+   Defaults are the finished state, so no-JS and reduced-motion
+   readers get the page intact.
+------------------------------------------------------------------ */
+.w{display:inline-block}
+
+.js [data-reveal="words"] .w{
+  color:rgba(18,16,14,.13);
+  transform:translateY(.34em);
+  transition:color .6s var(--ease),transform .6s var(--ease);
+}
+.js [data-reveal="words"].in .w{color:var(--ink);transform:none}
+
+.js [data-reveal="rise"]{
+  opacity:0;transform:translateY(16px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.js [data-reveal="rise"].in{opacity:1;transform:none}
+
+.js [data-reveal="stagger"] > *{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .6s var(--ease),transform .6s var(--ease);
+}
+.js [data-reveal="stagger"].in > *{opacity:1;transform:none}
 
 /* ================= EXPERIENCE ==================================== */
 .role{border-top:1px solid var(--rule)}
@@ -295,5 +320,7 @@ section{scroll-margin-top:2rem}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
-  .js .statement .w{color:var(--ink);transform:none;opacity:1}
+  .js [data-reveal="words"] .w{color:var(--ink);transform:none}
+  .js [data-reveal="rise"],
+  .js [data-reveal="stagger"] > *{opacity:1;transform:none}
 }
