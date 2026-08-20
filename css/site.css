@@ -314,20 +314,19 @@ section{scroll-margin-top:5.5rem}
 }
 
 /* ---- secondary repository cards --------------------------------- */
-.repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;margin-top:1.25rem}
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(13.5rem,1fr));gap:.75rem;margin-top:1.25rem}
 .repo{
-  display:flex;flex-direction:column;gap:.4rem;
-  padding:1.1rem 1.2rem;border-radius:12px;
+  display:flex;align-items:center;
+  padding:.9rem 1.05rem;border-radius:10px;
   background:var(--card);border:1px solid var(--rule);
   text-decoration:none;color:inherit;
   transition:border-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease);
 }
 .repo:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 20px rgba(15,23,42,.06)}
-.repo-name{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font-weight:600;font-size:1rem;color:var(--ink)}
+.repo-name{display:flex;align-items:center;justify-content:space-between;gap:.75rem;width:100%;font-weight:500;font-size:1rem;color:var(--ink)}
 .repo:hover .repo-name{color:var(--accent-deep)}
 .repo-name svg{width:14px;height:14px;stroke:var(--ink-3);fill:none;stroke-width:1.8;flex-shrink:0;transition:stroke .2s var(--ease),transform .2s var(--ease)}
 .repo:hover .repo-name svg{stroke:var(--accent);transform:translate(2px,-2px)}
-.repo p{font-size:1rem;line-height:1.5;color:var(--ink-3);max-width:none}
 
 /* ================= WRITING ======================================= */
 .post{display:grid;grid-template-columns:9.5rem 1fr auto;gap:1.5rem;align-items:baseline;
