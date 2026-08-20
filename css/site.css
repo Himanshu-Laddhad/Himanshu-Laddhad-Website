@@ -129,7 +129,9 @@ p{max-width:var(--measure)}
 }
 .landing-links a svg{width:17px;height:17px;fill:currentColor}
 .landing-links a:hover{color:var(--accent-deep);border-color:var(--accent);transform:translateY(-3px)}
-.landing-cv{margin-top:.2rem}
+.landing-acts{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:.2rem}
+.landing-connect svg{stroke:currentColor;fill:none;stroke-width:1.7}
+.landing-connect{background:var(--card)}
 
 .scroll-cue{
   position:absolute;left:50%;bottom:2.5rem;transform:translateX(-50%);
@@ -603,3 +605,13 @@ html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor .pcard{
 /* nav hide-on-scroll */
 .nav{transition:transform .45s var(--ease)}
 .nav.nav-hidden{transform:translateY(-130%)}
+
+/* GSAP owns the flip when the motion layer is live; the CSS hover flip
+   above remains the no-script fallback. */
+html.gsap-flip .pcard-3d{transition:none}
+html.gsap-flip .pcard:hover .pcard-3d,
+html.gsap-flip .pcard:focus-visible .pcard-3d{transform:none}
+.pcard{will-change:transform}
+.pcard-3d{will-change:transform}
+.pcard-face{transition:box-shadow .3s var(--ease)}
+.pcard:hover .pcard-face{box-shadow:0 18px 44px rgba(15,23,42,.14)}

@@ -118,7 +118,7 @@
     });
 
     var intro = document.querySelectorAll(
-      '.landing-name, .landing-links, .landing-cv, .scroll-cue,' +
+      '.landing-name, .landing-links, .landing-acts, .scroll-cue,' +
       '.about-copy h1, .about-lede, .about-copy > div, .about-acts, .about-media'
     );
     gsap.set(intro, { opacity: 0 });
@@ -126,7 +126,7 @@
 
     setTimeout(function () {
       if (gsap.ticker.frame > 20) return;
-      gsap.set(CALM + ',' + '.landing-name,.landing-links,.landing-cv,.scroll-cue,' +
+      gsap.set(CALM + ',' + '.landing-name,.landing-links,.landing-acts,.scroll-cue,' +
         '.about-copy h1,.about-lede,.about-copy > div,.about-acts,.about-media',
         { clearProps: 'all' });
     }, 2200);
@@ -188,10 +188,10 @@
   if (landing) {
     var name = landing.querySelectorAll('.landing-name .w');
     gsap.set(name, { yPercent: 115 });
-    gsap.set(['.landing-links', '.landing-cv', '.scroll-cue'], { opacity: 0, y: 18 });
+    gsap.set(['.landing-links', '.landing-acts', '.scroll-cue'], { opacity: 0, y: 18 });
     load.to(name, { yPercent: 0, duration: 1.0, stagger: 0.055 }, 0.2)
         .to('.landing-links', { opacity: 1, y: 0, duration: 0.7 }, 0.65)
-        .to('.landing-cv',    { opacity: 1, y: 0, duration: 0.7 }, 0.75)
+        .to('.landing-acts',  { opacity: 1, y: 0, duration: 0.7 }, 0.75)
         .to('.scroll-cue',    { opacity: 1, y: 0, duration: 0.7 }, 0.9);
   } else {
     var aboutH = document.querySelectorAll('.about-copy h1 .w');
@@ -314,6 +314,75 @@
     });
   }
 
+  /* ---- experience: animate the disclosure, not just the height ----
+     The container height stays on grid-template-rows (cheap, no layout
+     thrash). GSAP handles the sign and steps the contents in behind it
+     so opening reads as a sequence rather than a jump.
+  ------------------------------------------------------------------ */
+  document.querySelectorAll('.role').forEach(function (role) {
+    var head = role.querySelector('.role-head');
+    var sign = role.querySelector('.role-sign');
+    var lede = role.querySelector('.role-lede');
+    var items = role.querySelectorAll('.role-inner li');
+    if (!head) return;
+
+    head.addEventListener('click', function () {
+      var open = role.getAttribute('data-open') === 'true';
+
+      if (sign) {
+        gsap.to(sign, { rotate: open ? 135 : 0, duration: 0.5, ease: EASE });
+        gsap.fromTo(sign, { scale: 0.82 }, { scale: 1, duration: 0.45, ease: EASE });
+      }
+
+      if (open) {
+        gsap.killTweensOf([lede, items]);
+        gsap.fromTo([lede, items],
+          { y: 16, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: EASE, stagger: 0.055, delay: 0.12, overwrite: true });
+      } else {
+        gsap.to([lede, items], { opacity: 0, duration: 0.16, overwrite: true });
+      }
+    });
+
+    head.addEventListener('mouseenter', function () {
+      if (sign) gsap.to(sign, { scale: 1.12, duration: 0.22, ease: EASE });
+    });
+    head.addEventListener('mouseleave', function () {
+      if (sign) gsap.to(sign, { scale: 1, duration: 0.28, ease: EASE });
+    });
+  });
+
+  /* ---- project cards: drive the flip, lift and settle -------------
+     GSAP owns rotationY so the turn can carry a lift and a deepening
+     shadow. Inline transforms beat the stylesheet, and the CSS hover
+     flip stays as the no-script fallback.
+  ------------------------------------------------------------------ */
+  if (!isMobile) {
+    document.documentElement.classList.add('gsap-flip');
+
+    gsap.utils.toArray('.pcard').forEach(function (card) {
+      var inner = card.querySelector('.pcard-3d');
+      if (!inner) return;
+
+      var spin = gsap.quickTo(inner, 'rotationY', { duration: 0.78, ease: 'power3.out' });
+
+      function turn(face) {
+        spin(face ? -180 : 0);
+        gsap.to(card, {
+          y: face ? -10 : 0,
+          scale: face ? 1.015 : 1,
+          duration: face ? 0.42 : 0.5,
+          ease: EASE
+        });
+      }
+
+      card.addEventListener('mouseenter', function () { turn(true); });
+      card.addEventListener('mouseleave', function () { turn(false); });
+      card.addEventListener('focus', function () { turn(true); });
+      card.addEventListener('blur',  function () { turn(false); });
+    });
+  }
+
   /* ---- custom cursor + magnetic CTAs (fine pointers only) ---- */
   if (fine && !isMobile) {
     document.documentElement.classList.add('has-cursor');
@@ -376,7 +445,7 @@
      inline transform and show the page exactly as authored.
   ------------------------------------------------------------------ */
   var ANIMATED = [
-    '.landing-links', '.landing-cv', '.scroll-cue',
+    '.landing-links', '.landing-acts', '.scroll-cue',
     '.about-lede', '.about-copy > div', '.about-acts', '.about-media',
     '.band > h2', '.role', '.pcard', '.repo', '.tl-mark', '.tl-body',
     '.tl-year', '.sk', '.sk-key', '.cred-split > div', '.post',
