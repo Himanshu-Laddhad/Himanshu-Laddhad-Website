@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Himanshu Laddhad</title>
+<meta name="description" content="Himanshu Laddhad is a data scientist working across causal inference, demand forecasting, governed data platforms and retrieval-grounded LLM systems.">
+<meta property="og:title" content="About · Himanshu Laddhad">
+<meta property="og:description" content="AI and analytics systems that hold up in production.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<header class="nav" id="nav">
+  <div class="nav-pill">
+    <a class="nav-brand" href="index.html" aria-label="Home">
+      <img class="nav-avatar" src="assets/portrait.jpg" alt="" onerror="this.remove()">
+      <span class="nav-mark">HL</span>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Sections">
+      <a href="about.html" aria-current="page">About me</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#education">Education</a>
+      <a href="index.html#blogs">Blogs</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-end">
+      <a class="nav-cv" href="assets/Himanshu_Laddhad_Resume.pdf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        CV
+      </a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="nav-scrim" id="scrim" hidden></div>
+
+<main class="page">
+  <div class="wrap">
+
+    <section class="band about-band" id="about">
+      <div class="about-grid">
+        <div class="about-copy">
+          <h1 data-reveal="words" data-reveal-step="40">About me</h1>
+          <p class="about-lede" data-reveal="rise">I build data and AI systems that hold up in production: forecasting teams trust, pipelines that fail loudly instead of silently, and retrieval-grounded agents that turn weeks of manual work into hours.</p>
+          <div data-reveal="rise">
+            <p>I am a data scientist with three-plus years across enterprise analytics and AI engineering, currently completing an MS in Business Analytics and Information Management at Purdue University.</p>
+            <p>My work has followed one line: get the numbers right, then get them used. At JCB I rebuilt plant-level demand forecasting from spreadsheets into a validated Python pipeline, then moved to the business intelligence and quality side to own a curated analytics layer on SAP Datasphere, where the interesting problems were data contracts and typed exceptions rather than models. At Bosch I learned to rank exception categories by their actual contribution before touching anything. At PartnerLinQ I architected a retrieval-grounded mapping agent and trained a QLoRA-tuned small language model against it, measured honestly against the frontier-model pilot rather than claimed at parity.</p>
+            <p>The through-line is a preference for systems that survive contact with the people who depend on them. A model nobody trusts is a research artifact. A number nobody agrees on is a rumour. Most of my best work has been in validation, quarantine rules and the unglamorous plumbing that decides whether a forecast reaches a procurement desk at all.</p>
+            <p>I trained as a mechanical engineer before moving into data, which is probably why I still reach for the underlying mechanism before the model. Outside work I write on <a href="https://h11laddhad.medium.com" target="_blank" rel="noopener">Medium</a> about the parts of a build that usually get skipped.</p>
+          </div>
+          <div class="about-acts" data-reveal="rise">
+            <a class="btn btn-solid" href="index.html#work">See the work</a>
+            <a class="btn" href="assets/Himanshu_Laddhad_Resume.pdf" download>Download CV</a>
+          </div>
+        </div>
+        <div class="about-media" data-reveal="rise">
+          <div class="ph about-ph">
+            <img src="assets/portrait-hero.jpg" alt="Himanshu Laddhad" onerror="this.remove()">
+            <span class="ph-label">Portrait<br>4:5</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 data-reveal="words" data-reveal-step="46">Let&rsquo;s connect.</h2>
+      <p class="contact-lede">Open to data scientist, applied scientist and ML engineer roles across the US. Graduating July 2026.</p>
+      <a class="contact-mail" href="mailto:himanshuladdhad11@gmail.com">himanshuladdhad11@gmail.com</a>
+      <div class="contact-links">
+        <a class="btn" href="https://linkedin.com/in/himanshu-laddhad" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Himanshu-Laddhad" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://h11laddhad.medium.com" target="_blank" rel="noopener">Medium</a>
+        <a class="btn" href="assets/Himanshu_Laddhad_Resume.pdf" download>Download CV</a>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="foot-base">
+        <p>Himanshu Laddhad · West Lafayette, Indiana</p>
+        <p>Set in Space Grotesk, Inter and JetBrains Mono.</p>
+      </div>
+    </footer>
+
+  </div>
+</main>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- reveal system ----
+     data-reveal="words"   split into words, each lifting into ink
+     data-reveal="rise"    the whole block rises once
+     data-reveal="stagger" direct children arrive in sequence
+     data-reveal-step      ms between items (optional)
+  */
+  var reveals = [].slice.call(document.querySelectorAll('[data-reveal]'));
+
+  reveals.forEach(function(el){
+    var kind = el.getAttribute('data-reveal');
+    var step = parseInt(el.getAttribute('data-reveal-step'), 10);
+
+    if (kind === 'words') {
+      // wrap each word, leaving existing markup (<em>, <a>) intact
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+      var nodes = [], n;
+      while ((n = walker.nextNode())) { if (n.nodeValue.trim()) nodes.push(n); }
+      nodes.forEach(function(node){
+        var frag = document.createDocumentFragment();
+        node.nodeValue.split(/(\s+)/).forEach(function(tok){
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) {
+            frag.appendChild(document.createTextNode(tok));
+          } else {
+            var s = document.createElement('span');
+            s.className = 'w';
+            s.textContent = tok;
+            frag.appendChild(s);
+          }
+        });
+        node.parentNode.replaceChild(frag, node);
+      });
+      var gap = isNaN(step) ? 26 : step;
+      el.querySelectorAll('.w').forEach(function(w, i){
+        w.style.transitionDelay = (i * gap) + 'ms';
+      });
+    }
+
+    if (kind === 'stagger') {
+      var kids = el.children;
+      var k = isNaN(step) ? 70 : step;
+      for (var i = 0; i < kids.length; i++) {
+        kids[i].style.transitionDelay = Math.min(i * k, 480) + 'ms';
+      }
+    }
+  });
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var revealer = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      });
+    }, {threshold: 0.2, rootMargin: '0px 0px -8% 0px'});
+    reveals.forEach(function(el){ revealer.observe(el); });
+  }
+
+  /* ---- experience accordion ---- */
+  document.querySelectorAll('.role-head').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var role = btn.closest('.role');
+      var open = role.getAttribute('data-open') === 'true';
+      role.setAttribute('data-open', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+    });
+  });
+
+  /* ---- scroll spy ---- */
+  var links = [].slice.call(document.querySelectorAll('#navlinks a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && secs.length) {
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        links.forEach(function(a){
+          a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + en.target.id));
+        });
+      });
+    }, {rootMargin: '-45% 0px -50% 0px'});
+    secs.forEach(function(s){ spy.observe(s); });
+  }
+
+  /* ---- mobile menu ---- */
+  var navEl = document.getElementById('nav');
+  var menu = document.getElementById('navlinks');
+  var scrim = document.getElementById('scrim');
+  var burger = document.getElementById('burger');
+  function setMenu(open){
+    menu.classList.toggle('open', open);
+    navEl.classList.toggle('menu-open', open);
+    scrim.classList.toggle('open', open);
+    scrim.hidden = !open;
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('locked', open);
+  }
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  scrim.addEventListener('click', function(){ setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
+  links.forEach(function(a){
+    a.addEventListener('click', function(){ if(innerWidth <= 1080) setMenu(false); });
+  });
+
+  /* ---- condense nav once the page scrolls ---- */
+  var condense = new IntersectionObserver(function(en){
+    navEl.classList.toggle('scrolled', !en[0].isIntersecting);
+  }, {rootMargin: '0px'});
+  var top = document.querySelector('.hero');
+  if (top) condense.observe(top);
+})();
+</script>
+</body>
+</html>
