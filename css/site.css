@@ -238,13 +238,15 @@ section{scroll-margin-top:5.5rem}
 .role li b{font-family:var(--mono);font-size:.9em;font-weight:500;color:var(--accent-deep);letter-spacing:-.02em}
 
 /* ================= PROJECT CARDS (3D flip) ======================= */
-.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}
+/* one column once two would squeeze the back face past the 3:2 box */
+@media(max-width:940px){.work-grid{grid-template-columns:1fr}}
 
 .pcard{
   --tint:rgba(30,79,216,.07);
   --tint-line:rgba(30,79,216,.22);
   --tint-ink:#1739a8;
-  display:block;height:25.5rem;perspective:1500px;
+  display:block;aspect-ratio:3/2;perspective:1500px;
   text-decoration:none;color:inherit;border-radius:20px;
 }
 .pcard:nth-child(3n+2){--tint:rgba(13,124,128,.08);--tint-line:rgba(13,124,128,.24);--tint-ink:#0b5f62}
@@ -328,7 +330,7 @@ section{scroll-margin-top:5.5rem}
 
 /* touch and reduced motion: no rotation, both faces stacked */
 @media (hover:none){
-  .pcard{height:auto;perspective:none}
+  .pcard{height:auto;aspect-ratio:auto;perspective:none}
   .pcard-3d{transform:none !important;transform-style:flat}
   .pcard-face{
     position:relative;inset:auto;transform:none;
@@ -419,7 +421,6 @@ section{scroll-margin-top:5.5rem}
   .role-head .date{grid-column:1/-1;order:-1}
   .post{grid-template-columns:1fr auto}
   .post .date{grid-column:1/-1;order:-1}
-  .work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 
   .burger{display:flex}
   .nav-links{
