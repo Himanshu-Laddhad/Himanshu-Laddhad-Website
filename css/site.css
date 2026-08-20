@@ -615,3 +615,26 @@ html.gsap-flip .pcard:hover .pcard-3d,
 html.gsap-flip .pcard:focus-visible .pcard-3d{transform:none}
 .pcard-face{transition:box-shadow .3s var(--ease)}
 .pcard:hover .pcard-face{box-shadow:0 18px 44px rgba(15,23,42,.14)}
+
+/* ================= ABOUT TEASER (landing) ======================== */
+.teaser{display:grid;grid-template-columns:1fr 16rem;gap:clamp(2rem,5vw,4rem);align-items:center}
+.teaser-copy{max-width:52ch}
+.teaser-lede{font-size:1.25rem;line-height:1.55;color:var(--ink);margin-bottom:1rem}
+.teaser-copy p{color:var(--ink-2);margin-bottom:1rem}
+.teaser-link{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:.4rem;
+  font-weight:500;color:var(--accent-deep);text-decoration:none;
+  border-bottom:1px solid transparent;padding-bottom:2px;
+  transition:border-color .2s var(--ease);
+}
+.teaser-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .3s var(--ease)}
+.teaser-link:hover{border-bottom-color:var(--accent)}
+.teaser-link:hover svg{transform:translateX(4px)}
+.teaser-media{display:block;border-radius:16px;overflow:hidden;transition:transform .4s var(--ease)}
+.teaser-media .ph{aspect-ratio:4/5;border-radius:16px}
+.teaser-media:hover{transform:translateY(-4px)}
+
+@media(max-width:820px){
+  .teaser{grid-template-columns:1fr;gap:2rem}
+  .teaser-media{max-width:14rem}
+}
