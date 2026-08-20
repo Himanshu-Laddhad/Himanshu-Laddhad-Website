@@ -105,7 +105,7 @@
 
     var CALM = [
       '.band > h2', '.role', '.pcard', '.repo', '.tl-item',
-      '.sk', '.sk-key', '.cred-split > div', '.post',
+      '.sk', '.sk-key', '.cred-split > div', '.post', '.interest',
       '.contact-lede', '.contact-mail', '.contact-links'
     ].join(',');
 
@@ -256,6 +256,14 @@
       .to(mark, { scale: 1, opacity: 1, duration: 0.55, ease: EASE })
       .to([year, body], { x: 0, opacity: 1, duration: 0.75, ease: EASE, stagger: 0.06 }, 0.1);
   });
+
+  /* interest chips settle in one after another */
+  var chips = gsap.utils.toArray('.interest');
+  if (chips.length) {
+    gsap.set(chips, { y: 16, opacity: 0 });
+    gsap.to(chips, { y: 0, opacity: 1, duration: 0.55, ease: EASE, stagger: 0.08,
+      scrollTrigger: ST(chips[0].parentNode, { start: 'top 90%' }) });
+  }
 
   /* skills scale up in a fast wave */
   var tiles = gsap.utils.toArray('.sk');
@@ -445,7 +453,7 @@
     '.landing-links', '.landing-acts', '.scroll-cue',
     '.about-lede', '.about-copy > div', '.about-acts', '.about-media',
     '.band > h2', '.role', '.pcard', '.repo', '.tl-mark', '.tl-body',
-    '.tl-year', '.sk', '.sk-key', '.cred-split > div', '.post',
+    '.tl-year', '.sk', '.sk-key', '.cred-split > div', '.post', '.interest',
     '.contact-lede', '.contact-mail', '.contact-links', '.w'
   ].join(',');
 
