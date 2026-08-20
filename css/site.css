@@ -648,28 +648,29 @@ html.gsap-flip .pcard:focus-visible .pcard-3d{transform:none}
 .role-logo img{width:100%;height:100%;object-fit:contain}
 .role-head:hover .role-logo{border-color:var(--accent)}
 
-/* ---- about page avatar ----
-   A cut-out figure reads as an illustration, not a photograph, so it
-   stands on the page itself: no frame, no panel, no crop.
-------------------------------------------------------------------- */
-.about-avatar{display:block}
-.about-avatar img{display:block;width:100%;height:auto;margin-inline:auto}
+/* ---- about page portrait ---- */
+.about-photo{display:block;border-radius:16px;overflow:hidden;background:var(--paper-2)}
+.about-photo img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
 
-/* ---- interests: a short human note under the story ---- */
-.interests{padding-top:0}
-.interest-grid{
-  display:flex;flex-wrap:wrap;gap:.75rem;
-  margin-top:1.75rem;padding:0;list-style:none;
+/* ---- snapshots ----
+   Each figure grows in proportion to its own aspect ratio, so two
+   photographs shot in different orientations share a baseline and a
+   height without either being cropped to fit the other.
+------------------------------------------------------------------- */
+/* not a .band: this is a coda to the story, so no rule line and no top inset */
+.snaps{padding-bottom:4.5rem;padding-bottom:clamp(4.5rem,9vw,8rem)}
+.snap-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-start}
+.snap{flex:var(--ar) 1 0;min-width:13rem;margin:0}
+.snap-talk{--ar:1.3333}   /* 1280 x 960 */
+.snap-trek{--ar:0.5617}   /* 719 x 1280 */
+.snap img{
+  display:block;width:100%;aspect-ratio:var(--ar);
+  object-fit:cover;border-radius:14px;background:var(--paper-2);
 }
-.interest{
-  display:flex;align-items:center;gap:.65rem;
-  padding:.8rem 1.15rem;border:1px solid var(--rule);border-radius:14px;
-  background:var(--card);color:var(--ink);
-  font-family:var(--display);font-weight:500;font-size:1rem;
-  transition:border-color .2s var(--ease),transform .2s var(--ease);
+.snap figcaption{
+  margin-top:.7rem;font-size:.8rem;line-height:1.5;color:var(--ink-3);
 }
-.interest:hover{border-color:var(--accent);transform:translateY(-2px)}
-.interest svg{
-  width:22px;height:22px;flex-shrink:0;
-  stroke:var(--accent);fill:none;stroke-width:1.5;
+/* below this the two photographs are too narrow to read: give each the row */
+@media(max-width:640px){
+  .snap{flex:1 1 100%}
 }

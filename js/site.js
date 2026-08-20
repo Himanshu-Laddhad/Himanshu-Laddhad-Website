@@ -105,7 +105,7 @@
 
     var CALM = [
       '.band > h2', '.role', '.pcard', '.repo', '.tl-item',
-      '.sk', '.sk-key', '.cred-split > div', '.post', '.interest',
+      '.sk', '.sk-key', '.cred-split > div', '.post', '.snap',
       '.contact-lede', '.contact-mail', '.contact-links'
     ].join(',');
 
@@ -257,12 +257,12 @@
       .to([year, body], { x: 0, opacity: 1, duration: 0.75, ease: EASE, stagger: 0.06 }, 0.1);
   });
 
-  /* interest chips settle in one after another */
-  var chips = gsap.utils.toArray('.interest');
-  if (chips.length) {
-    gsap.set(chips, { y: 16, opacity: 0 });
-    gsap.to(chips, { y: 0, opacity: 1, duration: 0.55, ease: EASE, stagger: 0.08,
-      scrollTrigger: ST(chips[0].parentNode, { start: 'top 90%' }) });
+  /* snapshots fade up together */
+  var snaps = gsap.utils.toArray('.snap');
+  if (snaps.length) {
+    gsap.set(snaps, { y: 22, opacity: 0 });
+    gsap.to(snaps, { y: 0, opacity: 1, duration: 0.7, ease: EASE, stagger: 0.1,
+      scrollTrigger: ST(snaps[0].parentNode, { start: 'top 88%' }) });
   }
 
   /* skills scale up in a fast wave */
@@ -453,7 +453,7 @@
     '.landing-links', '.landing-acts', '.scroll-cue',
     '.about-lede', '.about-copy > div', '.about-acts', '.about-media',
     '.band > h2', '.role', '.pcard', '.repo', '.tl-mark', '.tl-body',
-    '.tl-year', '.sk', '.sk-key', '.cred-split > div', '.post', '.interest',
+    '.tl-year', '.sk', '.sk-key', '.cred-split > div', '.post', '.snap',
     '.contact-lede', '.contact-mail', '.contact-links', '.w'
   ].join(',');
 
