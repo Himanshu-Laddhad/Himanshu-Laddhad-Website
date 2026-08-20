@@ -387,13 +387,17 @@
   if (fine && !isMobile) {
     document.documentElement.classList.add('has-cursor');
 
+    var layer = document.createElement('div');
+    layer.className = 'cursor-layer';
+    layer.setAttribute('aria-hidden', 'true');
     var ring = document.createElement('div');
     ring.className = 'cursor';
     ring.innerHTML = '<span class="cursor-label">VIEW</span>';
     var dot = document.createElement('div');
     dot.className = 'cursor-dot';
-    document.body.appendChild(ring);
-    document.body.appendChild(dot);
+    layer.appendChild(ring);
+    layer.appendChild(dot);
+    document.body.appendChild(layer);
 
     var rx = gsap.quickTo(ring, 'x', { duration: 0.42, ease: 'power3' });
     var ry = gsap.quickTo(ring, 'y', { duration: 0.42, ease: 'power3' });
@@ -425,7 +429,7 @@
       });
     });
 
-    document.querySelectorAll('.btn-solid, .nav-cv, .scroll-cue').forEach(function (btn) {
+    document.querySelectorAll('.btn-solid, .nav-cv').forEach(function (btn) {
       var mx = gsap.quickTo(btn, 'x', { duration: 0.5, ease: 'power3' });
       var my = gsap.quickTo(btn, 'y', { duration: 0.5, ease: 'power3' });
       btn.addEventListener('mousemove', function (e) {

@@ -559,7 +559,10 @@ section{scroll-margin-top:5.5rem}
 }
 
 /* ---- custom cursor (pointer devices only) ------------------------- */
-.cursor,.cursor-dot{position:fixed;top:0;left:0;z-index:200;pointer-events:none;border-radius:50%;opacity:0}
+/* the cursor lives in a clipped fixed layer, so it can never extend the
+   scrollable area or nudge the page when it nears a viewport edge */
+.cursor-layer{position:fixed;inset:0;z-index:200;pointer-events:none;overflow:hidden}
+.cursor,.cursor-dot{position:absolute;top:0;left:0;pointer-events:none;border-radius:50%;opacity:0}
 .cursor{
   width:38px;height:38px;margin:-19px 0 0 -19px;
   border:1px solid var(--accent);
