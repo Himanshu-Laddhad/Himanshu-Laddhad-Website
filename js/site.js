@@ -301,7 +301,7 @@
 
   /* images drift against the scroll */
   if (!isMobile) {
-    gsap.utils.toArray('.about-ph img, .pcard-art img').forEach(function (img) {
+    gsap.utils.toArray('.pcard-art img').forEach(function (img) {
       gsap.to(img, { yPercent: -7, ease: 'none',
         scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 0.8 } });
     });
