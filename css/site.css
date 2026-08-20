@@ -474,6 +474,7 @@ section{scroll-margin-top:5.5rem}
 [data-cat="a"]{--sk-bg:rgba(30,79,216,.055);--sk-line:rgba(30,79,216,.22);--sk-ink:#1739a8;--sk-glow:rgba(30,79,216,.13)}
 [data-cat="b"]{--sk-bg:rgba(13,124,128,.06);--sk-line:rgba(13,124,128,.24);--sk-ink:#0b5f62;--sk-glow:rgba(13,124,128,.14)}
 [data-cat="c"]{--sk-bg:rgba(180,83,9,.06);--sk-line:rgba(180,83,9,.24);--sk-ink:#8a4208;--sk-glow:rgba(180,83,9,.14)}
+[data-cat="d"]{--sk-bg:rgba(109,40,217,.055);--sk-line:rgba(109,40,217,.22);--sk-ink:#5b21b6;--sk-glow:rgba(109,40,217,.13)}
 
 /* ================= CERTIFICATIONS & AWARDS ======================= */
 .cred-split{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
