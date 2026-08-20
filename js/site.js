@@ -202,11 +202,6 @@
         .to('.about-media', { opacity: 1, y: 0, duration: 0.9 }, 0.5);
   }
 
-  /* ---- ambient background ---- */
-  gsap.to('.bg-orb.o1', { xPercent: 12,  yPercent: 16,  duration: 26, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.bg-orb.o2', { xPercent: -16, yPercent: -12, duration: 32, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.bg-orb.o3', { xPercent: 14,  yPercent: -18, duration: 38, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
   if (landing) {
     gsap.to('.landing-name', {
       yPercent: 24, opacity: 0.3, ease: 'none',
