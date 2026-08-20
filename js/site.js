@@ -309,10 +309,6 @@
 
   /* images drift against the scroll */
   if (!isMobile) {
-    gsap.utils.toArray('.pcard-art img').forEach(function (img) {
-      gsap.to(img, { yPercent: -7, ease: 'none',
-        scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 0.8 } });
-    });
   }
 
   /* ---- experience: animate the disclosure, not just the height ----
@@ -379,8 +375,8 @@
 
       card.addEventListener('mouseenter', function () { turn(true); });
       card.addEventListener('mouseleave', function () { turn(false); });
-      card.addEventListener('focus', function () { turn(true); });
-      card.addEventListener('blur',  function () { turn(false); });
+      card.addEventListener('focusin',  function () { turn(true); });
+      card.addEventListener('focusout', function () { turn(false); });
     });
   }
 

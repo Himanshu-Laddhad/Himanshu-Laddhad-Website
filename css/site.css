@@ -256,7 +256,7 @@ section{scroll-margin-top:5.5rem}
   transition:transform .6s cubic-bezier(.4,0,.2,1);
 }
 .pcard:hover .pcard-3d,
-.pcard:focus-visible .pcard-3d{transform:rotateY(-180deg)}
+.pcard:focus-within .pcard-3d{transform:rotateY(-180deg)}
 
 .pcard-face{
   position:absolute;inset:0;
@@ -265,26 +265,34 @@ section{scroll-margin-top:5.5rem}
   display:flex;flex-direction:column;
 }
 
-/* front */
+/* front: the artwork is the face, the title sits on top of it */
 .pcard-front{
-  background:var(--tint);
+  background:var(--midnight);
   border:1px solid var(--tint-line);
+  overflow:hidden;justify-content:flex-end;
 }
+.pcard-shot{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+}
+/* the artwork carries its own busy detail, so dim it: an even wash for the
+   upper half, deepening to near-solid where the title actually sits */
+.pcard-front::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(9,14,26,.52) 0%,
+    rgba(9,14,26,.62) 42%,
+    rgba(9,14,26,.93) 100%);
+}
+.pcard-head{position:relative;z-index:1}
 .pcard-cat{
+  display:block;
   font-size:.8rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--tint-ink);margin-bottom:1.1rem;
+  color:rgba(255,255,255,.74);margin-bottom:.45rem;
 }
-.pcard-front h3{font-size:1.25rem;line-height:1.25;letter-spacing:-.02em;color:var(--ink)}
-.pcard-art{
-  margin-top:auto;border-radius:12px;overflow:hidden;position:relative;
-  aspect-ratio:16/10;background:rgba(255,255,255,.6);
-  border:1px solid var(--tint-line);
-  display:flex;align-items:center;justify-content:center;padding:1rem;
-}
-.pcard-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pcard-art span{
-  font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--tint-ink);opacity:.7;text-align:center;padding:0 .8rem;
+.pcard-front h3{
+  font-size:1.25rem;line-height:1.25;letter-spacing:-.02em;color:#fff;
+  text-shadow:0 1px 14px rgba(0,0,0,.55);
 }
 
 /* back */
@@ -296,13 +304,27 @@ section{scroll-margin-top:5.5rem}
 }
 .pcard-back p{font-size:1rem;line-height:1.6;color:var(--ink-2);max-width:none}
 .pcard-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:1rem}
-.pcard-go{
-  display:flex;align-items:center;justify-content:space-between;gap:.5rem;
+.pcard-acts{
+  display:flex;align-items:center;gap:.55rem;
   margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--rule-2);
-  font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--tint-ink);
 }
-.pcard-go svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
+.pcard-live{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.5rem .9rem;border-radius:8px;text-decoration:none;
+  background:var(--tint);border:1px solid var(--tint-line);color:var(--tint-ink);
+  font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  transition:border-color .2s var(--ease),background .2s var(--ease);
+}
+.pcard-live:hover{background:var(--card);border-color:var(--tint-ink)}
+.pcard-live svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.pcard-repo{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.3rem;height:2.3rem;border-radius:8px;
+  border:1px solid var(--rule);color:var(--ink-2);
+  transition:border-color .2s var(--ease),color .2s var(--ease);
+}
+.pcard-repo:hover{border-color:var(--tint-ink);color:var(--tint-ink)}
+.pcard-repo svg{width:17px;height:17px;fill:currentColor}
 
 /* touch and reduced motion: no rotation, both faces stacked */
 @media (hover:none){
@@ -312,9 +334,9 @@ section{scroll-margin-top:5.5rem}
     position:relative;inset:auto;transform:none;
     backface-visibility:visible;-webkit-backface-visibility:visible;
   }
-  .pcard-front{border-radius:20px 20px 0 0;border-bottom:0}
+  /* stacked, so the face needs its own height: match the artwork and it never crops */
+  .pcard-front{border-radius:20px 20px 0 0;border-bottom:0;aspect-ratio:3/2;min-height:11rem}
   .pcard-back{transform:none;border-radius:0 0 20px 20px;box-shadow:none;border-top:0}
-  .pcard-art{aspect-ratio:16/9}
 }
 
 .more-head{
@@ -611,7 +633,7 @@ html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor .pcard{
    above remains the no-script fallback. */
 html.gsap-flip .pcard-3d{transition:none}
 html.gsap-flip .pcard:hover .pcard-3d,
-html.gsap-flip .pcard:focus-visible .pcard-3d{transform:none}
+html.gsap-flip .pcard:focus-within .pcard-3d{transform:none}
 .pcard-face{transition:box-shadow .3s var(--ease)}
 .pcard:hover .pcard-face{box-shadow:0 18px 44px rgba(15,23,42,.14)}
 
