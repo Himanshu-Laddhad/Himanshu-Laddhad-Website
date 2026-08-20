@@ -147,7 +147,8 @@ p{max-width:var(--measure)}
 
 /* ================= LAYOUT ======================================== */
 .page{margin-left:0}
-.band:first-of-type{padding-top:clamp(7rem,11vw,9rem)}
+.band:first-of-type{padding-top:7rem}
+@media(min-width:900px){.band:first-of-type{padding-top:9rem}}
 .wrap{max-width:calc(var(--measure) + 22rem);margin:0 auto;padding:0 var(--gutter)}
 section{scroll-margin-top:5.5rem}
 
@@ -202,25 +203,6 @@ section{scroll-margin-top:5.5rem}
    readers get the page intact.
 ------------------------------------------------------------------ */
 .w{display:inline-block}
-
-.js [data-reveal="words"] .w{
-  color:rgba(18,16,14,.13);
-  transform:translateY(.34em);
-  transition:color .6s var(--ease),transform .6s var(--ease);
-}
-.js [data-reveal="words"].in .w{color:var(--ink);transform:none}
-
-.js [data-reveal="rise"]{
-  opacity:0;transform:translateY(16px);
-  transition:opacity .7s var(--ease),transform .7s var(--ease);
-}
-.js [data-reveal="rise"].in{opacity:1;transform:none}
-
-.js [data-reveal="stagger"] > *{
-  opacity:0;transform:translateY(18px);
-  transition:opacity .6s var(--ease),transform .6s var(--ease);
-}
-.js [data-reveal="stagger"].in > *{opacity:1;transform:none}
 
 /* ================= EXPERIENCE ==================================== */
 .role{border-top:1px solid var(--rule)}
@@ -453,9 +435,6 @@ section{scroll-margin-top:5.5rem}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
-  .js [data-reveal="words"] .w{color:var(--ink);transform:none}
-  .js [data-reveal="rise"],
-  .js [data-reveal="stagger"] > *{opacity:1;transform:none}
 }
 
 /* ================= FOOTER EXTRAS ================================= */
@@ -534,7 +513,8 @@ section{scroll-margin-top:5.5rem}
 .contact-links{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
 
 /* ================= ABOUT PAGE ==================================== */
-.about-band{padding-top:clamp(7rem,12vw,10rem)}
+.about-band{padding-top:7rem}
+@media(min-width:900px){.about-band{padding-top:9.5rem}}
 .about-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:start}
 .about-copy h1{font-size:3rem;font-size:clamp(2.25rem,5vw,3.5rem);margin-bottom:1.5rem}
 .about-lede{
@@ -543,8 +523,8 @@ section{scroll-margin-top:5.5rem}
   line-height:1.4;letter-spacing:-.02em;color:var(--ink);margin-bottom:2rem;
 }
 .about-copy p{color:var(--ink-2);margin-bottom:1.15rem}
-.about-copy a{color:var(--accent-deep);text-decoration-color:var(--rule);text-underline-offset:3px}
-.about-copy a:hover{text-decoration-color:var(--accent)}
+.about-copy p a{color:var(--accent-deep);text-decoration-color:var(--rule);text-underline-offset:3px}
+.about-copy p a:hover{text-decoration-color:var(--accent)}
 .about-acts{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
 .about-media{position:sticky;top:7rem}
 .about-ph{aspect-ratio:4/5;border-radius:10px}
@@ -554,3 +534,72 @@ section{scroll-margin-top:5.5rem}
   .about-grid{grid-template-columns:1fr;gap:2.5rem}
   .about-media{position:static;order:-1;max-width:18rem}
 }
+
+/* ==================================================================
+   MOTION LAYER
+   Durations: 120ms feedback · 260ms cards · 700ms entrances
+   1200ms+ ambient. Easing: exponential ease-out, no bounce.
+   ================================================================== */
+
+/* ---- ambient background ------------------------------------------ */
+.bg-field{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.bg-orb{
+  position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;
+  will-change:transform;
+}
+.bg-orb.o1{width:44vw;height:44vw;left:-10vw;top:-8vw;background:radial-gradient(circle,rgba(30,79,216,.16),transparent 68%)}
+.bg-orb.o2{width:38vw;height:38vw;right:-8vw;top:34vh;background:radial-gradient(circle,rgba(13,124,128,.13),transparent 68%)}
+.bg-orb.o3{width:34vw;height:34vw;left:22vw;bottom:-10vw;background:radial-gradient(circle,rgba(180,83,9,.10),transparent 68%)}
+
+.bg-grain{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.32;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* ---- custom cursor (pointer devices only) ------------------------- */
+.cursor,.cursor-dot{position:fixed;top:0;left:0;z-index:200;pointer-events:none;border-radius:50%;opacity:0}
+.cursor{
+  width:38px;height:38px;margin:-19px 0 0 -19px;
+  border:1px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  transition:background-color .3s var(--ease),border-color .3s var(--ease),opacity .25s var(--ease);
+}
+.cursor-dot{width:5px;height:5px;margin:-2.5px 0 0 -2.5px;background:var(--accent);transition:opacity .25s var(--ease),transform .2s var(--ease)}
+.cursor-label{
+  font-family:var(--mono);font-size:.8rem;font-weight:500;letter-spacing:.06em;
+  color:#fff;opacity:0;transform:scale(.7);
+  transition:opacity .22s var(--ease),transform .22s var(--ease);
+}
+.cursor.is-link{background:var(--accent-wash);border-color:var(--accent)}
+.cursor.is-view{background:var(--accent);border-color:var(--accent)}
+.cursor.is-view .cursor-label{opacity:1;transform:none}
+.cursor.is-view + .cursor-dot,.cursor.is-link + .cursor-dot{opacity:0 !important}
+
+html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor .pcard{cursor:none}
+
+/* ---- masked heading reveal --------------------------------------- */
+.band > h2{will-change:clip-path,transform}
+
+/* ---- magnetic buttons -------------------------------------------- */
+.btn,.nav-cv,.landing-cv{will-change:transform}
+
+@media(hover:none),(max-width:900px){
+  .cursor,.cursor-dot{display:none}
+  html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor .pcard{cursor:auto}
+  .bg-orb{filter:blur(50px);opacity:.36}
+  .bg-grain{opacity:.2}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cursor,.cursor-dot,.bg-grain{display:none}
+  .bg-orb{opacity:.28}
+  .scroll-cue{animation:none}
+}
+
+/* word masks for headline reveals */
+.w-mask{display:inline-block;overflow:hidden;vertical-align:top}
+.w{display:inline-block;will-change:transform}
+
+/* nav hide-on-scroll */
+.nav{transition:transform .45s var(--ease)}
+.nav.nav-hidden{transform:translateY(-130%)}
