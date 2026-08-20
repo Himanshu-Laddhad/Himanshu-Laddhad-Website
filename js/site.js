@@ -12,7 +12,9 @@
 (function () {
   'use strict';
 
-  var reduce   = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mq       = new URLSearchParams(location.search).get('motion');
+  var osReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce   = mq === 'full' ? false : (mq === 'off' ? true : osReduce);
   var fine     = matchMedia('(hover:hover) and (pointer:fine)').matches;
   var isMobile = matchMedia('(max-width:900px)').matches;
   var hasGSAP  = typeof window.gsap !== 'undefined';
@@ -85,9 +87,49 @@
     lastY = y;
   }
 
-  if (reduce || !hasGSAP) {
+  if (!hasGSAP) {
     addEventListener('scroll', function () { navChrome(scrollY); }, { passive: true });
     navChrome(scrollY);
+    return;
+  }
+
+  /* ---- calm mode ----
+     prefers-reduced-motion asks for less motion, not none. Keep the
+     entrances as short opacity fades with no travel, and drop
+     parallax, ambient drift, smooth scrolling and the custom cursor.
+     ?motion=full previews the full set, ?motion=off forces calm.
+  ------------------------------------------------------------------ */
+  if (reduce) {
+    addEventListener('scroll', function () { navChrome(scrollY); }, { passive: true });
+    navChrome(scrollY);
+
+    var CALM = [
+      '.band > h2', '.role', '.pcard', '.repo', '.tl-item',
+      '.sk', '.sk-key', '.cred-split > div', '.post',
+      '.contact-lede', '.contact-mail', '.contact-links'
+    ].join(',');
+
+    gsap.utils.toArray(CALM).forEach(function (el) {
+      gsap.set(el, { opacity: 0 });
+      gsap.to(el, {
+        opacity: 1, duration: 0.45, ease: 'power1.out',
+        scrollTrigger: { trigger: el, start: 'top 92%', once: true }
+      });
+    });
+
+    var intro = document.querySelectorAll(
+      '.landing-name, .landing-links, .landing-cv, .scroll-cue,' +
+      '.about-copy h1, .about-lede, .about-copy > div, .about-acts, .about-media'
+    );
+    gsap.set(intro, { opacity: 0 });
+    gsap.to(intro, { opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power1.out' });
+
+    setTimeout(function () {
+      if (gsap.ticker.frame > 20) return;
+      gsap.set(CALM + ',' + '.landing-name,.landing-links,.landing-cv,.scroll-cue,' +
+        '.about-copy h1,.about-lede,.about-copy > div,.about-acts,.about-media',
+        { clearProps: 'all' });
+    }, 2200);
     return;
   }
 
@@ -147,8 +189,7 @@
     var name = landing.querySelectorAll('.landing-name .w');
     gsap.set(name, { yPercent: 115 });
     gsap.set(['.landing-links', '.landing-cv', '.scroll-cue'], { opacity: 0, y: 18 });
-    load.to({ opacity: 1, y: 0, duration: 0.7 }, 0.1)
-        .to(name, { yPercent: 0, duration: 1.0, stagger: 0.055 }, 0.2)
+    load.to(name, { yPercent: 0, duration: 1.0, stagger: 0.055 }, 0.2)
         .to('.landing-links', { opacity: 1, y: 0, duration: 0.7 }, 0.65)
         .to('.landing-cv',    { opacity: 1, y: 0, duration: 0.7 }, 0.75)
         .to('.scroll-cue',    { opacity: 1, y: 0, duration: 0.7 }, 0.9);
@@ -172,10 +213,6 @@
     gsap.to('.landing-name', {
       yPercent: 24, opacity: 0.3, ease: 'none',
       scrollTrigger: { trigger: landing, start: 'top top', end: 'bottom top', scrub: 0.6 }
-    });
-    gsap.to({
-      yPercent: 60, opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: landing, start: 'top top', end: '60% top', scrub: 0.6 }
     });
   }
 
