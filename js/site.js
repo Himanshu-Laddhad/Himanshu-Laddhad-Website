@@ -133,26 +133,24 @@
     return;
   }
 
-  /* ---- smooth scroll ---- */
-  var lenis = null;
-  if (window.Lenis && !isMobile) {
-    lenis = new Lenis({ duration: 1.05, smoothWheel: true });
-    lenis.on('scroll', function (e) { ScrollTrigger.update(); navChrome(e.scroll || scrollY); });
-    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-    gsap.ticker.lagSmoothing(0);
-    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-      var href = a.getAttribute('href') || '';
-      if (href.length < 2) return;
-      a.addEventListener('click', function (e) {
-        var t = document.querySelector(href);
-        if (!t) return;
-        e.preventDefault();
-        lenis.scrollTo(t, { offset: -80 });
-      });
+  /* ---- scrolling stays native ----
+     No smooth-scroll library: the wheel maps 1:1 to the page with no
+     momentum or drift. Anchor jumps use the browser's own smooth
+     behaviour and offset for the fixed nav.
+  ------------------------------------------------------------------ */
+  addEventListener('scroll', function () { navChrome(scrollY); }, { passive: true });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    var href = a.getAttribute('href') || '';
+    if (href.length < 2) return;
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(href);
+      if (!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + scrollY - 80;
+      scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
     });
-  } else {
-    addEventListener('scroll', function () { navChrome(scrollY); }, { passive: true });
-  }
+  });
 
   /* ---- split headline words into masked spans ---- */
   document.querySelectorAll('[data-reveal="words"]').forEach(function (el) {
