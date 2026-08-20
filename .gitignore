@@ -1,7 +1,10 @@
 .claude/
+.impeccable/
 
 node_modules/
 package-lock.json
 package.json
+
+.vercel/
 
 assets/photos/_originals/

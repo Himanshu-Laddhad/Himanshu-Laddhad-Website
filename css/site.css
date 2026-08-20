@@ -105,7 +105,7 @@ p{max-width:var(--measure)}
 
 .burger{display:none;background:none;border:0;cursor:pointer;padding:.55rem;flex-direction:column;gap:4.5px}
 .burger span{display:block;width:19px;height:1.5px;background:var(--ink);border-radius:1px;transition:transform .3s var(--ease),opacity .2s var(--ease)}
-.nav-scrim{display:none;position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:70;opacity:0;transition:opacity .3s var(--ease)}
+.nav-scrim{display:none;position:fixed;inset:0;background:rgba(15,23,42,.4);z-index:70;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
 
 /* ================= LANDING ======================================= */
 .landing{
@@ -436,7 +436,7 @@ section{scroll-margin-top:5.5rem}
   .nav-links a::after{display:none}
   .nav-links a:last-child{border-bottom:0}
   .nav-scrim{display:block}
-  .nav-scrim.open{opacity:1}
+  .nav-scrim.open{opacity:1;pointer-events:auto}
   body.locked{overflow:hidden}
   .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
   .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
@@ -459,6 +459,9 @@ section{scroll-margin-top:5.5rem}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  /* the turn is how the back face is legible, not decoration: snapping
+     straight to reversed text reads as a glitch, so keep a shorter turn */
+  .pcard-3d{transition-duration:.45s !important}
 }
 
 /* ================= FOOTER EXTRAS ================================= */
