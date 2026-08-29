@@ -105,7 +105,7 @@
           <p class="role-lede">Building a single EDI-to-XML mapping by hand took three to five weeks. I architected a retrieval-grounded agent to collapse that, then trained a small local model to remove the per-call API dependency at production volume, and measured it honestly against the frontier-model pilot rather than claiming parity.</p>
           <ul>
             <li>Architected a RAG-grounded EDI-to-XML mapping agent routing messages through Groq to a GPT-4.1 tool-calling model, retrieving from a <b>400+ file</b> XSLT corpus keyed by company and function, cutting mapping build time from <b>3–5 weeks</b> of manual development to <b>3–4 hours</b>.</li>
-            <li>Trained a small language model (Qwen) with QLoRA covering transform generation, modification, repair and explanation, grounded by the same retrieval layer, reaching <b>73%</b> first-pass Altova validity against the GPT-4.1 pilot's <b>78%</b>, removing per-call API dependency across the full task set.</li>
+            <li>Trained a small language model (Qwen) with QLoRA covering transform generation, modification, repair and explanation, grounded by the same retrieval layer, reaching <b>68%</b> first-pass Altova validity against the GPT-4.1 pilot's <b>78%</b>, removing per-call API dependency across the full task set.</li>
             <li>Delivered the Streamlit evaluation harness fronting both pipelines, executing generated XSLT against user-supplied test cases in-session, handed off as the reference implementation for PartnerLinQ's engineering team to productionise.</li>
           </ul>
         </div></div></div>
@@ -124,10 +124,10 @@
         <div class="role-body" id="r2"><div><div class="role-inner">
           <p class="role-lede">The mandate was open-ended: modernise how the business used its operational data, with no predefined scope. I drew the boundary myself: my work began at the warehouse layer, consuming what upstream systems produced and holding them to a data contract rather than claiming ownership I could not enforce. The decision I would defend hardest is that failed rows are quarantined with a typed exception code, never dropped, because a missing record is not a clean record.</p>
           <ul>
-            <li>Owned the curated analytics layer on SAP Datasphere, modelling four event streams from Parquet on ADLS Gen2 into a conformed star schema across inbound, harmonised and curated layers at <b>35K rows/day</b> and <b>670–700 attributes</b> per entity on a single join key, replacing manual consolidation for <b>10+</b> cross-functional consumers.</li>
+            <li>Owned the curated analytics layer on SAP Datasphere, modelling four event streams from Delta Lake tables into a conformed star schema across inbound, harmonised and curated layers at <b>35K rows/day</b> and <b>670–700 attributes</b> per entity on a single join key, replacing manual consolidation for <b>10+</b> quality, engineering and operations consumers coordinating production and rework decisions.</li>
             <li>Engineered the dbt build and test suite on the dbt-hana adapter, enforcing uniqueness, referential and accepted-value contracts in SQL plus custom tests for stage sequence and N-sigma drift, quarantining failed rows with typed exception codes.</li>
             <li>Designed the Power BI consumption layer over SAP HANA ODBC on hourly incremental refresh, partitioned on ingest timestamp so late-arriving corrections are never stranded, surfacing <b>15+ KPIs</b> across <b>3 stakeholder groups</b>, replacing <b>20+ hours/week</b> of hand-built reporting.</li>
-            <li>Orchestrated severity-tiered exception alerting through Power Automate to Teams adaptive cards with writeback acknowledgement and per-rule cooldowns, cutting exception rates <b>15%</b> against an open-versus-acknowledged SLA view.</li>
+            <li>Orchestrated severity-tiered exception alerting through Power Automate to Teams adaptive cards with writeback acknowledgement and per-rule cooldowns, cutting mean time-to-acknowledge <b>15%</b> against an open-versus-acknowledged SLA view.</li>
           </ul>
         </div></div></div>
       </div>
@@ -146,10 +146,10 @@
           <p class="role-lede">Planning ran on spreadsheet moving averages fed by a single source, and an earlier attempt to patch it had stalled. My manager handed it to me because I questioned the assumption rather than the tool. I proposed a rebuild instead of a patch, proved it on one product line in a two-week parallel run, and only then asked for full commitment. When a stale input later produced silently wrong forecasts, I flagged it the same day and rolled back. The teams that had been most sceptical trusted the system more afterwards.</p>
           <ul>
             <li>Led a <b>3-person</b> rebuild of demand forecasting from Excel to XGBoost in Python on SAP BW, engineering lag, volatility, capacity-headroom and pipeline-weighted features across <b>500+ SKUs</b> and <b>4 product lines</b>, cutting MAPE <b>18%</b> against the spreadsheet baseline.</li>
-            <li>Devised a two-track strategy routing regular-demand SKUs to the model and intermittent-demand SKUs to a trailing annual average, validated on a temporal split with a <b>6-month</b> holdout, replacing gut-based planning for procurement and capacity teams.</li>
+            <li>Devised a two-track strategy routing regular-demand SKUs to the model and intermittent-demand SKUs (<b>15%</b> of portfolio) to a trailing annual average, validated on a temporal split with a <b>6-month</b> holdout, replacing gut-based planning for procurement and capacity teams.</li>
             <li>Built a Python breadth-first traversal over a multi-level component hierarchy, exploding SKU forecasts into per-component monthly demand consumed directly by procurement, holding <b>98% on-time delivery</b> against a <b>95%</b> benchmark.</li>
-            <li>Deployed time-series monitoring flagging demand deviations <b>4–6 weeks</b> ahead across <b>6+ international markets</b>, with automated alert routing into operational dashboards.</li>
-            <li>Instituted freshness validation and output sanity checks as the pipeline's first operations after a stale input produced silently wrong forecasts, halting bad data before it reached procurement.</li>
+            <li>Deployed time-series monitoring flagging demand deviations <b>4–6 weeks</b> ahead across <b>6+ international markets</b>, letting planning teams correct course via ocean freight instead of air, roughly <b>15x</b> cheaper.</li>
+            <li>Instituted freshness validation and output sanity checks as the pipeline's first operations after a stale input produced silently wrong forecasts, averting an estimated <b>$5K&ndash;$20K</b> in wrong parts orders per incident.</li>
           </ul>
         </div></div></div>
       </div>
@@ -386,25 +386,35 @@
         <span class="sk" data-cat="b">A/B testing</span>
         <span class="sk" data-cat="b">Feature engineering</span>
         <span class="sk" data-cat="b">SHAP</span>
+        <span class="sk" data-cat="b">Explainable AI</span>
         <span class="sk" data-cat="b">Statistical modelling</span>
         <span class="sk" data-cat="c">Power BI</span>
         <span class="sk" data-cat="c">Tableau</span>
         <span class="sk" data-cat="c">Dimensional modelling</span>
+        <span class="sk" data-cat="c">Data modelling</span>
         <span class="sk" data-cat="c">Data contracts</span>
+        <span class="sk" data-cat="c">Data pipeline architecture</span>
         <span class="sk" data-cat="c">Root cause analysis</span>
         <span class="sk" data-cat="c">Data quality</span>
         <span class="sk" data-cat="c">ETL pipelines</span>
+        <span class="sk" data-cat="c">ELT pipelines</span>
         <span class="sk" data-cat="c">dbt</span>
+        <span class="sk" data-cat="c">Apache Airflow</span>
         <span class="sk" data-cat="c">PostgreSQL</span>
         <span class="sk" data-cat="c">BigQuery</span>
         <span class="sk" data-cat="c">DuckDB</span>
         <span class="sk" data-cat="c">Snowflake</span>
         <span class="sk" data-cat="c">Databricks</span>
         <span class="sk" data-cat="c">Azure Data Lake</span>
+        <span class="sk" data-cat="c">Microsoft Azure</span>
         <span class="sk" data-cat="c">SAP Datasphere</span>
         <span class="sk" data-cat="c">SAP BW</span>
         <span class="sk" data-cat="c">AWS SageMaker</span>
-        <span class="sk" data-cat="c">Parquet</span>
+        <span class="sk" data-cat="c">AWS</span>
+        <span class="sk" data-cat="c">Delta Lake</span>
+        <span class="sk" data-cat="c">Kafka</span>
+        <span class="sk" data-cat="c">NoSQL</span>
+        <span class="sk" data-cat="c">GraphDB</span>
         <span class="sk" data-cat="c">Power Automate</span>
         <span class="sk" data-cat="c">Git</span>
         <span class="sk" data-cat="c">Agile / Scrum</span>
