@@ -123,9 +123,9 @@
         <div class="role-body" id="r1"><div><div class="role-inner">
           <p class="role-lede">Building a single EDI-to-XML mapping by hand took three to five weeks. I architected a retrieval-grounded agent to collapse that, then trained a small local model to remove the per-call API dependency at production volume, and measured it honestly against the frontier-model pilot rather than claiming parity.</p>
           <ul>
-            <li>Architected a RAG-grounded EDI-to-XML mapping agent routing messages through Groq to a GPT-4.1 tool-calling model, retrieving from a <b>400+ file</b> XSLT corpus keyed by company and function, cutting mapping build time from <b>3–5 weeks</b> of manual development to <b>3–4 hours</b>.</li>
-            <li>Trained a small language model (Qwen) with QLoRA covering transform generation, modification, repair and explanation, grounded by the same retrieval layer, reaching <b>68%</b> first-pass Altova validity against the GPT-4.1 pilot's <b>78%</b>, removing per-call API dependency across the full task set.</li>
-            <li>Delivered the Streamlit evaluation harness fronting both pipelines, executing generated XSLT against user-supplied test cases in-session, handed off as the reference implementation for PartnerLinQ's engineering team to productionise.</li>
+            <li>Architected a RAG-grounded data transformation pipeline routing messages through Groq to a GPT-4.1 tool-calling model, retrieving from a <b>400+ file</b> XSLT corpus, cutting mapping build time from <b>3&ndash;5 weeks</b> to <b>3&ndash;4 hours</b> and letting new partners onboard in hours, not weeks.</li>
+            <li>Engineered a QLoRA fine-tuning pipeline training an SLM (Qwen) on transform generation, modification, repair and explanation, grounded by the same retrieval layer at <b>68%</b> first-pass Altova validity against the GPT-4.1 pilot's <b>78%</b>, keeping partner mapping data in-house.</li>
+            <li>Delivered the Streamlit evaluation harness fronting both pipelines, executing generated XSLT against user-supplied test cases in-session, letting the engineering team validate and trust model output and integrate it into their platform as a chat agent or assistant.</li>
           </ul>
         </div></div></div>
       </div>
@@ -135,7 +135,7 @@
           <span class="date">Feb 2024 – Jul 2025</span>
           <span class="role-logo" aria-hidden="true"><img src="assets/logos/jcb.svg" alt="" onerror="this.closest('.role-logo').remove()"></span>
           <span>
-            <h3>Data Scientist, Business Intelligence &amp; Quality</h3>
+            <h3>Data Engineer, Business Intelligence &amp; Quality</h3>
             <span class="role-org">JCB India · Pune</span>
           </span>
           <span class="role-sign" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
@@ -143,10 +143,10 @@
         <div class="role-body" id="r2"><div><div class="role-inner">
           <p class="role-lede">The mandate was open-ended: modernise how the business used its operational data, with no predefined scope. I drew the boundary myself: my work began at the warehouse layer, consuming what upstream systems produced and holding them to a data contract rather than claiming ownership I could not enforce. The decision I would defend hardest is that failed rows are quarantined with a typed exception code, never dropped, because a missing record is not a clean record.</p>
           <ul>
-            <li>Owned the curated analytics layer on SAP Datasphere, modelling four event streams from Delta Lake tables into a conformed star schema across inbound, harmonised and curated layers at <b>35K rows/day</b> and <b>670–700 attributes</b> per entity on a single join key, replacing manual consolidation for <b>10+</b> quality, engineering and operations consumers coordinating production and rework decisions.</li>
-            <li>Engineered the dbt build and test suite on the dbt-hana adapter, enforcing uniqueness, referential and accepted-value contracts in SQL plus custom tests for stage sequence and N-sigma drift, quarantining failed rows with typed exception codes.</li>
-            <li>Designed the Power BI consumption layer over SAP HANA ODBC on hourly incremental refresh, partitioned on ingest timestamp so late-arriving corrections are never stranded, surfacing <b>15+ KPIs</b> across <b>3 stakeholder groups</b>, replacing <b>20+ hours/week</b> of hand-built reporting.</li>
-            <li>Orchestrated severity-tiered exception alerting through Power Automate to Teams adaptive cards with writeback acknowledgement and per-rule cooldowns, cutting mean time-to-acknowledge <b>15%</b> against an open-versus-acknowledged SLA view.</li>
+            <li>Consolidated four event streams from a delta database into one SAP Datasphere pipeline (inbound, harmonised, curated) on a single serial join key at <b>35K rows/day</b>, replacing manual consolidation for <b>10+</b> quality, engineering and operations consumers.</li>
+            <li>Hardened the pipeline with dbt tests and custom SQL drift checks that quarantine failed rows with typed exception codes, stopping bad data before it could distort KPIs or supply ordering.</li>
+            <li>Scheduled hourly incremental refresh from SAP HANA into Power BI for <b>15+ KPIs</b> across <b>3 stakeholder groups</b>, cutting <b>20+ hours/week</b> of manual reporting and redirecting analyst time to data quality.</li>
+            <li>Orchestrated severity-tiered exception alerting through Power Automate to Teams adaptive cards with writeback acknowledgement, cutting mean time-to-acknowledge <b>15%</b> and easing the backlog behind delayed production commitments.</li>
           </ul>
         </div></div></div>
       </div>
@@ -156,7 +156,7 @@
           <span class="date">May 2023 – Feb 2024</span>
           <span class="role-logo" aria-hidden="true"><img src="assets/logos/jcb.svg" alt="" onerror="this.closest('.role-logo').remove()"></span>
           <span>
-            <h3>Data Scientist, Supply Chain</h3>
+            <h3>Data Engineer, Supply Chain</h3>
             <span class="role-org">JCB India · Pune</span>
           </span>
           <span class="role-sign" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
@@ -164,11 +164,10 @@
         <div class="role-body" id="r3"><div><div class="role-inner">
           <p class="role-lede">Planning ran on spreadsheet moving averages fed by a single source, and an earlier attempt to patch it had stalled. My manager handed it to me because I questioned the assumption rather than the tool. I proposed a rebuild instead of a patch, proved it on one product line in a two-week parallel run, and only then asked for full commitment. When a stale input later produced silently wrong forecasts, I flagged it the same day and rolled back. The teams that had been most sceptical trusted the system more afterwards.</p>
           <ul>
-            <li>Led a <b>3-person</b> rebuild of demand forecasting from Excel to XGBoost in Python on SAP BW, engineering lag, volatility, capacity-headroom and pipeline-weighted features across <b>500+ SKUs</b> and <b>4 product lines</b>, cutting MAPE <b>18%</b> against the spreadsheet baseline.</li>
-            <li>Devised a two-track strategy routing regular-demand SKUs to the model and intermittent-demand SKUs (<b>15%</b> of portfolio) to a trailing annual average, validated on a temporal split with a <b>6-month</b> holdout, replacing gut-based planning for procurement and capacity teams.</li>
-            <li>Built a Python breadth-first traversal over a multi-level component hierarchy, exploding SKU forecasts into per-component monthly demand consumed directly by procurement, holding <b>98% on-time delivery</b> against a <b>95%</b> benchmark.</li>
-            <li>Deployed time-series monitoring flagging demand deviations <b>4–6 weeks</b> ahead across <b>6+ international markets</b>, letting planning teams correct course via ocean freight instead of air, roughly <b>15x</b> cheaper.</li>
-            <li>Instituted freshness validation and output sanity checks as the pipeline's first operations after a stale input produced silently wrong forecasts, averting an estimated <b>$5K&ndash;$20K</b> in wrong parts orders per incident.</li>
+            <li>Instituted freshness and sanity checks as the first pipeline steps after a stale input produced silently wrong forecasts, halting bad data before it reached procurement and averting an estimated <b>$5K&ndash;$20K</b> in wrong parts orders per incident.</li>
+            <li>Led a <b>3-person</b> rebuild of the demand-forecasting pipeline, migrating from Excel to XGBoost in Python on SAP BW, engineering lag and volatility features across <b>500+ SKUs</b> and <b>4 product lines</b>, cutting forecast error <b>18%</b> and reducing excess and deficit inventory.</li>
+            <li>Built a Python BFS traversal over a multi-level component hierarchy, exploding SKU forecasts into per-component monthly demand for procurement, resolving shared-component conflicts and holding <b>98% on-time delivery</b> against the <b>95%</b> target.</li>
+            <li>Deployed Python time-series monitoring flagging demand deviations <b>4&ndash;6 weeks</b> ahead across <b>6+ markets</b>, letting planning teams correct course via ocean freight instead of air, roughly <b>15x</b> cheaper.</li>
           </ul>
         </div></div></div>
       </div>
@@ -186,8 +185,8 @@
         <div class="role-body" id="r4"><div><div class="role-inner">
           <p class="role-lede">A short, focused internship, and where I first learned that most of the loss in a process concentrates in a handful of exception modes, provided the data is clean enough to rank them honestly.</p>
           <ul>
-            <li>Structured a Pareto analysis over <b>9 months</b> of operational time-series data in Python, ranking <b>140+ exception categories</b> by contribution to downtime, lifting process efficiency <b>10%</b> for the operations team.</li>
-            <li>Integrated corrective-action tracking against the ranked categories across procurement, quality assurance and operations, cutting exception frequency <b>~90%</b> and reprocessing rate <b>14%</b> on a high-volume workflow.</li>
+            <li>Structured a Pareto data analysis over <b>9 months</b> of operational time-series data in Python, ranking <b>140+ exception categories</b> by contribution to downtime, lifting process efficiency <b>10%</b>.</li>
+            <li>Integrated corrective-action tracking against the ranked categories across procurement, quality assurance and operations, cutting exception frequency <b>~90%</b> and reprocessing rate <b>14%</b>.</li>
           </ul>
         </div></div></div>
       </div>
