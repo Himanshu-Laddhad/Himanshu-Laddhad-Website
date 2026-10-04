@@ -308,7 +308,7 @@ section{scroll-margin-top:5.5rem}
 /* two lines per card: what it does for the business, then how it works */
 /* a headline and a supporting line, centred in the space above the actions */
 .pcard-back .pcard-use{
-  margin-top:auto;font-family:var(--display);font-weight:500;
+  margin-top:auto;font-family:var(--display);font-weight:700;
   font-size:1.25rem;line-height:1.25;letter-spacing:-.02em;color:var(--ink);
 }
 .pcard-back{padding:1.25rem 1.4rem}
