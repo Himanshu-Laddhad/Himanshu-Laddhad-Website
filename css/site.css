@@ -305,6 +305,9 @@ section{scroll-margin-top:5.5rem}
   box-shadow:0 12px 32px rgba(15,23,42,.09),0 2px 6px rgba(15,23,42,.05);
 }
 .pcard-back p{font-size:1rem;line-height:1.6;color:var(--ink-2);max-width:none}
+/* two lines per card: what it does for the business, then how it works */
+.pcard-back .pcard-use{color:var(--ink);font-weight:500}
+.pcard-back .pcard-how{margin-top:.6rem}
 .pcard-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:1rem}
 .pcard-acts{
   display:flex;align-items:center;gap:.55rem;
