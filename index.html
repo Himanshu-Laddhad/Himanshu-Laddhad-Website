@@ -121,12 +121,11 @@
           <span class="role-sign" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
         </button>
         <div class="role-body" id="r1"><div><div class="role-inner">
-          <p class="role-lede">Building a single EDI-to-XML mapping by hand took three to five weeks. I architected a retrieval-grounded agent to collapse that, then trained a small local model to remove the per-call API dependency at production volume, and measured it honestly against the frontier-model pilot rather than claiming parity.</p>
+          <p class="role-lede">Building a single data mapping by hand took an estimated three to five weeks. I led a team of five through a nine-week proof of concept: a retrieval-grounded pipeline that drafts new mappings from 400+ existing ones, then a small in-house model set against GPT-4.1. I presented the trade-off to leadership as it was, 68% valid first try against 78%, in exchange for keeping partner data private, rather than claiming parity.</p>
           <ul>
-            <li>Cut the time to build a data mapping from PartnerLinQ&rsquo;s estimated <b>3&ndash;5 weeks</b> to <b>3&ndash;4 hours</b> in a proof of concept, leading a team of <b>five</b> through a <b>9-week</b> project.</li>
-            <li>Built a RAG (retrieval-augmented generation) pipeline with GPT-4.1 tool-calling and Groq routing that drafts new XSLT mappings by learning from the company&rsquo;s <b>400+</b> existing ones.</li>
-            <li>Compared a small in-house model (Qwen, QLoRA) with GPT-4.1 and presented the trade-off to PartnerLinQ leadership: <b>78%</b> valid first try for GPT-4.1 against <b>68%</b>, with the in-house model keeping partner data private.</li>
-            <li>Handed engineers the code, a final report and a Streamlit test harness so they can build it into a chat assistant.</li>
+            <li>Cut mapping build time from PartnerLinQ&rsquo;s estimated <b>3&ndash;5 weeks</b> to <b>3&ndash;4 hours</b> in a proof of concept (POC) by building a RAG pipeline over <b>400+</b> existing XSLT mappings, with GPT-4.1 tool-calling and Groq routing.</li>
+            <li>Presented the team&rsquo;s model comparison to PartnerLinQ leadership: a small in-house Qwen model (QLoRA) reached <b>68%</b> first-try Altova validity against GPT-4.1&rsquo;s <b>78%</b>, a trade-off that keeps partner data private.</li>
+            <li>Led a team of <b>five</b> over <b>9 weeks</b>, handing engineers the code, report and a Streamlit test harness to build a chat assistant.</li>
           </ul>
         </div></div></div>
       </div>
@@ -142,14 +141,13 @@
           <span class="role-sign" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
         </button>
         <div class="role-body" id="r2"><div><div class="role-inner">
-          <p class="role-lede">The mandate was open-ended: modernise how the business used its operational data, with no predefined scope. I drew the boundary myself: my work began at the warehouse layer, consuming what upstream systems produced and holding them to a data contract rather than claiming ownership I could not enforce. The decision I would defend hardest is that failed rows are quarantined with a typed exception code, never dropped, because a missing record is not a clean record.</p>
+          <p class="role-lede">The mandate was open-ended: modernise how the business used its operational data, with no predefined scope. I drew the boundary myself, owning the pipeline and the KPIs built on it rather than claiming ownership of upstream systems I could not enforce. The decision I would defend hardest is that failing rows are set aside under a labelled reason code, never dropped, because a missing record is not a clean record.</p>
           <ul>
-            <li>Gave quality, engineering and operations teams one trusted source of data and helped cut recurring quality exceptions by <b>~75%</b>.</li>
-            <li>Replaced manual consolidation with an automated ETL pipeline on Databricks merging four event streams for <b>10+</b> users.</li>
-            <li>Orchestrated dbt models and tests in Airflow (task dependencies, automatic retries, failure alerts), setting bad records aside under reason codes instead of letting them distort KPIs.</li>
-            <li>Ranked functions by exception volume using exploratory data analysis (EDA) in Power BI and directed engineering fixes to the worst ones.</li>
-            <li>Traced the root cause of problems on request by pulling an item&rsquo;s history across all four streams and finding when it began, so fixes were permanent, not repeat workarounds.</li>
-            <li>Gathered KPI requirements from <b>3</b> cross-functional groups and built the Power BI data model, dashboards and KPI documentation for <b>9 KPIs</b>, saving <b>20+ hours</b> a week of manual reporting.</li>
+            <li>Gave <b>10+</b> users one trusted source for four event streams with an automated ETL pipeline on Databricks, replacing manual consolidation.</li>
+            <li>Kept KPIs clean without manual runs by running dbt models and tests through Airflow (task dependencies, automatic retries, failure alerts), with failing rows set aside under labelled reason codes.</li>
+            <li>Contributed to a <b>~75%</b> drop in recurring quality exceptions by ranking functions with EDA in Power BI to target engineering fixes.</li>
+            <li>Gave engineering and quality the cause behind problems on request, pulling an affected item&rsquo;s history across the four streams and checking when it began, so fixes were permanent instead of repeat workarounds.</li>
+            <li>Saved <b>20+ hours</b> a week of manual reporting by gathering KPI requirements from <b>3</b> cross-functional groups and building the Power BI data model, dashboards and KPI documentation for <b>9 KPIs</b>, training users along the way.</li>
           </ul>
         </div></div></div>
       </div>
@@ -165,14 +163,13 @@
           <span class="role-sign" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span>
         </button>
         <div class="role-body" id="r3"><div><div class="role-inner">
-          <p class="role-lede">Planning ran on spreadsheet moving averages fed by a single source, and an earlier attempt to patch it had stalled. My manager handed it to me because I questioned the assumption rather than the tool. I proposed a rebuild instead of a patch, proved it on one product line in a two-week parallel run, and only then asked for full commitment. When a stale input later produced silently wrong forecasts, I flagged it the same day and rolled back. The teams that had been most sceptical trusted the system more afterwards.</p>
+          <p class="role-lede">Planning ran on spreadsheet moving averages fed by a single source, and an earlier attempt to patch it had stalled. My manager handed it to me because I questioned the assumption rather than the tool. I proposed a rebuild instead of a patch, proved it on one product line in a two-week parallel run, and only then asked for full commitment. Later I added a daily dashboard so supply surprises became same-day schedule decisions. When a stale input produced silently wrong forecasts, I flagged it the same day and put freshness checks in front of procurement. The teams that had been most sceptical trusted the system more afterwards.</p>
           <ul>
-            <li>Cut forecast error <b>18%</b> and lifted on-time delivery from below <b>95%</b> to about <b>98%</b> through demand forecasting.</li>
-            <li>Led a team of <b>3</b> in moving forecasting for <b>500+ SKUs</b> from Excel to an XGBoost machine-learning model in Python, reducing excess and shortage stock.</li>
-            <li>Turned forecasts into monthly demand per component with a Python job, feeding procurement.</li>
-            <li>Ran a daily production dashboard for the operations and supply chain stand-up (quality joined when needed) with a time-by-time plan, status and alerts, so supply surprises became same-day schedule decisions.</li>
-            <li>Set up data freshness checks that stop stale inputs reaching procurement (an estimated <b>$5K&ndash;$20K</b> per incident) and weekly forecast-vs-orders checks.</li>
-            <li>Built a linear optimization model in Excel with Analytic Solver to reorder urgent sales orders when shortages left <b>20%</b> of priority orders unfulfilled; operations reworked that week&rsquo;s plan, cutting the figure to <b>8%</b>.</li>
+            <li>Led <b>3</b> people in moving forecasting from Excel to an XGBoost model (<b>500+ SKUs</b>), sending slow-moving SKUs to a trailing annual average, cutting forecast error <b>18%</b> and excess and shortage stock.</li>
+            <li>Translated SKU forecasts into monthly demand per component with a Python job, lifting on-time delivery from under <b>95%</b> to about <b>98%</b>.</li>
+            <li>Turned supply surprises into same-day schedule decisions with a daily production dashboard for the operations and supply chain standup (quality joined when needed): time-by-time plan, status and alerts for every department.</li>
+            <li>Instituted freshness checks that stop stale inputs reaching procurement (est. <b>$5K&ndash;$20K</b> per incident) and weekly forecast-vs-orders checks.</li>
+            <li>Compared scenarios with a linear optimization model in Excel with Analytic Solver to reorder urgent sales orders when shortages left <b>20%</b> of priority orders unfulfilled; operations reworked that week&rsquo;s plan, cutting the figure to <b>8%</b>.</li>
           </ul>
         </div></div></div>
       </div>
@@ -388,66 +385,66 @@
       <h2 data-reveal="rise">Skills</h2>
       <div class="sk-legend" data-reveal="rise">
         <span class="sk-key" data-cat="a">Languages &amp; core tools</span>
-        <span class="sk-key" data-cat="b">Data engineering &amp; platforms</span>
-        <span class="sk-key" data-cat="c">Analytics, BI &amp; data quality</span>
-        <span class="sk-key" data-cat="d">AI engineering &amp; ML</span>
+        <span class="sk-key" data-cat="b">Analytics engineering &amp; platforms</span>
+        <span class="sk-key" data-cat="c">Analytics, BI &amp; experimentation</span>
+        <span class="sk-key" data-cat="d">Machine learning &amp; AI</span>
       </div>
       <div class="sk-grid" data-reveal="stagger" data-reveal-step="14">
         <span class="sk" data-cat="a">SQL</span>
         <span class="sk" data-cat="a">Python</span>
-        <span class="sk" data-cat="a">Spark / PySpark</span>
+        <span class="sk" data-cat="a">PySpark</span>
         <span class="sk" data-cat="a">Pandas</span>
         <span class="sk" data-cat="a">NumPy</span>
         <span class="sk" data-cat="a">Excel</span>
         <span class="sk" data-cat="a">Git</span>
-        <span class="sk" data-cat="b">ETL / ELT</span>
+        <span class="sk" data-cat="a">DuckDB</span>
+        <span class="sk" data-cat="b">ETL pipelines</span>
         <span class="sk" data-cat="b">Apache Airflow</span>
         <span class="sk" data-cat="b">dbt</span>
-        <span class="sk" data-cat="b">Kafka</span>
         <span class="sk" data-cat="b">Databricks</span>
         <span class="sk" data-cat="b">Snowflake</span>
         <span class="sk" data-cat="b">BigQuery</span>
-        <span class="sk" data-cat="b">Delta Lake</span>
-        <span class="sk" data-cat="b">PostgreSQL</span>
-        <span class="sk" data-cat="b">DuckDB</span>
-        <span class="sk" data-cat="b">NoSQL</span>
-        <span class="sk" data-cat="b">SAP</span>
         <span class="sk" data-cat="b">AWS</span>
         <span class="sk" data-cat="b">Microsoft Azure</span>
-        <span class="sk" data-cat="b">Data warehousing</span>
-        <span class="sk" data-cat="b">Star schema</span>
+        <span class="sk" data-cat="b">NoSQL</span>
         <span class="sk" data-cat="b">Data modelling</span>
-        <span class="sk" data-cat="b">Data contracts</span>
-        <span class="sk" data-cat="b">Observability</span>
-        <span class="sk" data-cat="b">Monitoring</span>
+        <span class="sk" data-cat="b">Data quality</span>
+        <span class="sk" data-cat="b">Automation</span>
+        <span class="sk" data-cat="b">Power Automate</span>
         <span class="sk" data-cat="c">Power BI</span>
         <span class="sk" data-cat="c">Tableau</span>
+        <span class="sk" data-cat="c">Looker</span>
+        <span class="sk" data-cat="c">Data Studio</span>
         <span class="sk" data-cat="c">Data viz</span>
-        <span class="sk" data-cat="c">Power Automate</span>
-        <span class="sk" data-cat="c">Streamlit</span>
+        <span class="sk" data-cat="c">EDA</span>
         <span class="sk" data-cat="c">KPI reporting</span>
-        <span class="sk" data-cat="c">Data quality</span>
         <span class="sk" data-cat="c">RCA</span>
         <span class="sk" data-cat="c">A/B testing</span>
-        <span class="sk" data-cat="c">Forecasting</span>
-        <span class="sk" data-cat="c">Statistics</span>
+        <span class="sk" data-cat="c">Experimentation</span>
         <span class="sk" data-cat="c">Causal inference</span>
-        <span class="sk" data-cat="c">Agile / Scrum</span>
-        <span class="sk" data-cat="d">RAG</span>
-        <span class="sk" data-cat="d">Agentic AI</span>
-        <span class="sk" data-cat="d">Tool calling</span>
-        <span class="sk" data-cat="d">LangGraph</span>
-        <span class="sk" data-cat="d">LangChain</span>
-        <span class="sk" data-cat="d">LLM APIs</span>
-        <span class="sk" data-cat="d">Vector databases</span>
-        <span class="sk" data-cat="d">LLM evals</span>
-        <span class="sk" data-cat="d">QLoRA / PEFT</span>
-        <span class="sk" data-cat="d">MLflow</span>
-        <span class="sk" data-cat="d">PyTorch</span>
+        <span class="sk" data-cat="c">Forecasting</span>
+        <span class="sk" data-cat="c">Regression</span>
+        <span class="sk" data-cat="c">Streamlit</span>
         <span class="sk" data-cat="d">Machine learning</span>
         <span class="sk" data-cat="d">scikit-learn</span>
         <span class="sk" data-cat="d">XGBoost</span>
+        <span class="sk" data-cat="d">LightGBM</span>
+        <span class="sk" data-cat="d">CatBoost</span>
+        <span class="sk" data-cat="d">PyTorch</span>
+        <span class="sk" data-cat="d">EconML</span>
+        <span class="sk" data-cat="d">SHAP</span>
+        <span class="sk" data-cat="d">Explainable AI</span>
+        <span class="sk" data-cat="d">Deep learning</span>
+        <span class="sk" data-cat="d">Uplift modelling</span>
+        <span class="sk" data-cat="d">MLflow</span>
         <span class="sk" data-cat="d">SageMaker</span>
+        <span class="sk" data-cat="d">RAG</span>
+        <span class="sk" data-cat="d">LangChain</span>
+        <span class="sk" data-cat="d">LangGraph</span>
+        <span class="sk" data-cat="d">LLM APIs</span>
+        <span class="sk" data-cat="d">Tool calling</span>
+        <span class="sk" data-cat="d">QLoRA / PEFT</span>
+        <span class="sk" data-cat="d">LLM evals</span>
       </div>
     </section>
 
